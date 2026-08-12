@@ -130,7 +130,12 @@ def auth(handler):
 
 class Handler(BaseHTTPRequestHandler):
     def send(self, status, body):
-        self.send_response(status); self.send_header("Content-Type", "application/json"); self.send_header("Access-Control-Allow-Origin", os.getenv("FRONTEND_URL", "*")); self.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization"); self.end_headers(); self.wfile.write(json.dumps(body).encode())
+        self.send_response(status); self.send_header("Content-Type", "application/json")
+        configured = os.getenv("FRONTEND_URL", "")
+        origin = self.headers.get("Origin", "")
+        allowed = configured if configured and (origin == configured or origin == "") else (origin if origin.startswith(("http://localhost:", "http://127.0.0.1:", "https://")) else configured)
+        if allowed: self.send_header("Access-Control-Allow-Origin", allowed)
+        self.send_header("Vary", "Origin"); self.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization"); self.send_header("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS"); self.end_headers(); self.wfile.write(json.dumps(body).encode())
     def body(self):
         try: return json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))) or b"{}")
         except json.JSONDecodeError: return None
@@ -244,5 +249,9 @@ class Handler(BaseHTTPRequestHandler):
         finally: c.close()
 
 def main():
-    init_db(); port=int(os.getenv("PORT","3000")); log.info("JAN-SHIELD API listening on %s",port); ThreadingHTTPServer((os.getenv("HOST","0.0.0.0"),port),Handler).serve_forever()
+    init_db()
+    host = os.environ.get("HOST", "0.0.0.0")
+    port = int(os.environ.get("PORT", "3000"))
+    log.info("JAN-SHIELD API listening on %s:%s", host, port)
+    ThreadingHTTPServer((host, port), Handler).serve_forever()
 if __name__ == "__main__": main()

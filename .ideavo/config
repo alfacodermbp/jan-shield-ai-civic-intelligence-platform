@@ -7,8 +7,8 @@
   "runStep": [
     {
       "name": "Run Backend API",
-      "command": "python -m backend.app",
-      "port": "3000"
+      "command": "python3 -m backend.app",
+      "port": "$PORT"
     }
   ],
   "deploySteps": [],

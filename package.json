@@ -3,9 +3,9 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "start": "python -m backend.app",
-    "dev": "python -m backend.app",
-    "seed": "python -m backend.seed",
-    "test": "python -m unittest discover -s backend/tests -p 'test_*.py' -v"
+    "start": "py -m backend.app",
+    "dev": "py -m backend.app",
+    "seed": "py -m backend.seed",
+    "test": "py -m unittest discover -s backend/tests -p 'test_*.py' -v"
   }
 }

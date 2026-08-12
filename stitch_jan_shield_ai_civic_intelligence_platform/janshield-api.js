@@ -1,5 +1,7 @@
 (function () {
-  const API_BASE_URL = window.JAN_SHIELD_API_URL || 'http://localhost:3000';
+  const API_BASE_URL = window.JAN_SHIELD_API_URL || (location.hostname === 'localhost' || location.hostname === '127.0.0.1'
+    ? 'http://' + location.hostname + ':3000'
+    : location.origin);
   async function request(path, options) {
     const response = await fetch(API_BASE_URL + path, Object.assign({ headers: { 'Content-Type': 'application/json' } }, options || {}));
     const payload = await response.json();
