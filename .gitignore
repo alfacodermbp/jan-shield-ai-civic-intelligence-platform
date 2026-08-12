@@ -1,2 +1,6 @@
 .ideavo/project
 *.log
+.env
+backend/data/*.db
+__pycache__/
+*.pyc

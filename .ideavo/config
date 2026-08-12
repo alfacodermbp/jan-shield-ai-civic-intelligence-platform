@@ -6,8 +6,8 @@
   "buildSteps": [],
   "runStep": [
     {
-      "name": "Run Static Preview",
-      "command": "npx --yes serve . --listen 3000",
+      "name": "Run Backend API",
+      "command": "python -m backend.app",
       "port": "3000"
     }
   ],
