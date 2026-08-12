@@ -8,7 +8,7 @@
     {
       "name": "Run Backend API",
       "command": "python3 -m backend.app",
-      "port": "$PORT"
+      "port": "3000"
     }
   ],
   "deploySteps": [],
