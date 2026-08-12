@@ -220,6 +220,12 @@ class Handler(BaseHTTPRequestHandler):
                     if not action: return self.send(*err("VALIDATION_ERROR", "action is required", 422))
                     if complaint["status"] not in ("IN_PROGRESS", "ACTION_INITIATED", "ASSIGNED", "REOPENED"): return self.send(*err("INVALID_TRANSITION", "Complaint is not ready for resolution", 409))
                     rid=uid("R-"); c.execute("INSERT INTO resolutions(id,complaint_id,department_id,action,notes,evidence_reference,status,created_at,updated_at) VALUES(?,?,?,?,?,?,?,?,?)",(rid,cid,p.get("departmentId"),action,p.get("notes"),p.get("evidenceReference"),"SUBMITTED",now(),now())); c.execute("UPDATE complaints SET status='RESOLUTION_PENDING_VERIFICATION',updated_at=? WHERE id=?",(now(),cid)); audit(c,user["id"],"RESOLUTION_SUBMITTED","complaint",cid,{"resolutionId":rid}); c.execute("INSERT INTO notifications(id,user_id,type,title,message,read,created_at) VALUES(?,?,?,?,?,?,?)",(uid("N-"),complaint["user_id"],"RESOLUTION_AVAILABLE","Resolution available",f"A resolution has been submitted for complaint {cid}.",0,now())); c.commit(); return self.send(*ok(one(c,"SELECT * FROM resolutions WHERE id=?",(rid,)),"Resolution submitted",201))
+                if len(parts)==4 and parts[3] == "verify" and method == "POST":
+                    user, failure = require_role(self, ("CITIZEN", "AUTHORITY", "ADMIN"))
+                    if failure: return self.send(*failure)
+                    target = "RESOLVED" if (self.body() or {}).get("accepted", True) else "REOPENED"
+                    if target not in TRANSITIONS.get(complaint["status"], set()): return self.send(*err("INVALID_TRANSITION", f"Cannot verify complaint in {complaint['status']} state", 409))
+                    c.execute("UPDATE complaints SET status=?,updated_at=? WHERE id=?",(target,now(),cid)); audit(c,user["id"],"CITIZEN_VERIFICATION","complaint",cid,{"accepted":target=="RESOLVED"}); c.commit(); return self.send(*ok(one(c,"SELECT * FROM complaints WHERE id=?",(cid,)),"Complaint verification recorded"))
                 if len(parts)==4 and parts[3] == "analysis" and method == "GET": return self.send(*ok(rows(c,"SELECT * FROM ai_analyses WHERE complaint_id=? ORDER BY created_at DESC",(cid,))))
                 if method in ("PATCH", "PUT"):
                     p=self.body() or {}; e=validate(p,True)
