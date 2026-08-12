@@ -9,7 +9,7 @@
     'report an issue': '/report_a_grievance/code.html', 'report new grievance': '/report_a_grievance/code.html',
     'explore command center': '/authority_command_center_1/code.html', overview: '/authority_command_center_1/code.html',
     'authority panel': '/authority_command_center_1/code.html', 'citizen requests': '/authority_command_center_1/code.html',
-    'systemic issues': '/systemic_issue_analysis/code.html'
+    'systemic issues': '/systemic_issue_analysis/code.html', 'view all': '/authority_command_center_1/code.html'
   };
   var tokenKey = 'janShieldToken';
   var token = function () { return sessionStorage.getItem(tokenKey) || localStorage.getItem(tokenKey); };
@@ -41,6 +41,8 @@
       Object.keys(routes).some(function (key) { if (label.indexOf(key) !== -1) { button.addEventListener('click', function () { go(key); }); return true; } return false; });
       if (label.indexOf('print') !== -1 || label.indexOf('export') !== -1) button.addEventListener('click', function () { window.print(); });
       if (label.indexOf('share') !== -1) button.addEventListener('click', function () { navigator.clipboard && navigator.clipboard.writeText(location.href).then(function () { notify('Link copied'); }); });
+      if (label.indexOf('notification') !== -1) button.addEventListener('click', function () { request('/api/notifications').then(function (items) { notify(items.length ? items.filter(function (n) { return !n.read; }).length + ' unread notifications' : 'No notifications'); }).catch(function (e) { notify(e.message, 'error'); }); });
+      if (label.indexOf('emergency alert') !== -1) button.addEventListener('click', function () { notify('Emergency alert requires human authority confirmation.', 'error'); });
     });
   }
   function wireComplaintForm() {
@@ -94,8 +96,18 @@
       input.addEventListener('keydown', async function (event) { if (event.key !== 'Enter' || !input.value.trim()) return; try { var result = await request('/api/complaints?search=' + encodeURIComponent(input.value.trim())); notify((result.total || 0) + ' complaints found.'); } catch (e) { notify(e.message, 'error'); } });
     });
   }
+  function wireEvidence() {
+    var button = Array.from(document.querySelectorAll('button')).find(function (b) { return /upload documents/i.test(b.textContent); });
+    if (!button) return;
+    var input = document.createElement('input'); input.type = 'file'; input.accept = 'image/*,.pdf,.txt'; input.hidden = true; document.body.appendChild(input);
+    button.addEventListener('click', function () { input.click(); });
+    input.addEventListener('change', async function () {
+      var id = new URLSearchParams(location.search).get('id') || localStorage.getItem('janShieldComplaintId'); if (!id || !input.files[0]) return;
+      try { await request('/api/complaints/' + encodeURIComponent(id) + '/evidence', { method: 'POST', body: JSON.stringify({ filename: input.files[0].name, type: input.files[0].type.indexOf('image') === 0 ? 'image' : input.files[0].name.toLowerCase().endsWith('.pdf') ? 'pdf' : 'text' }) }); notify('Evidence metadata recorded.'); } catch (e) { notify(e.message, 'error'); }
+    });
+  }
   window.JanShieldAPI = { request: request, notify: notify, go: go, routes: routes };
-  wireNavigation(); wireComplaintForm(); wireSearch();
+  wireNavigation(); wireComplaintForm(); wireSearch(); wireEvidence();
   if (/citizen_dashboard/.test(location.pathname)) fillDashboard();
   if (/authority_analytics_dashboard/.test(location.pathname)) fillAnalytics();
   if (/complaint_detail_resolution/.test(location.pathname)) fillComplaintDetail();

@@ -213,6 +213,8 @@ class Handler(BaseHTTPRequestHandler):
                     p = self.body() or {}; filename = str(p.get("filename", "")).strip(); file_type = str(p.get("type", "text")).lower()
                     if not filename or file_type not in ("image", "pdf", "text", "video"): return self.send(*err("VALIDATION_ERROR", "filename and supported evidence type are required", 422))
                     evidence_id = uid("E-"); c.execute("INSERT INTO evidence(id,complaint_id,type,file_reference,description,created_at) VALUES(?,?,?,?,?,?)", (evidence_id,cid,file_type,filename,p.get("description"),now())); audit(c, complaint["user_id"], "EVIDENCE_ADDED", "complaint", cid, {"evidenceId": evidence_id}); c.commit(); return self.send(*ok(one(c,"SELECT * FROM evidence WHERE id=?",(evidence_id,)),"Evidence metadata recorded",201))
+                if len(parts)==4 and parts[3] == "evidence" and method == "GET": return self.send(*ok(rows(c,"SELECT * FROM evidence WHERE complaint_id=? ORDER BY created_at DESC",(cid,))))
+                if len(parts)==4 and parts[3] == "resolutions" and method == "GET": return self.send(*ok(rows(c,"SELECT * FROM resolutions WHERE complaint_id=? ORDER BY created_at DESC",(cid,))))
                 if len(parts)==4 and parts[3] == "resolution" and method == "POST":
                     user, failure = require_role(self, ("AUTHORITY", "ADMIN"))
                     if failure: return self.send(*failure)
@@ -228,12 +230,16 @@ class Handler(BaseHTTPRequestHandler):
                     c.execute("UPDATE complaints SET status=?,updated_at=? WHERE id=?",(target,now(),cid)); audit(c,user["id"],"CITIZEN_VERIFICATION","complaint",cid,{"accepted":target=="RESOLVED"}); c.commit(); return self.send(*ok(one(c,"SELECT * FROM complaints WHERE id=?",(cid,)),"Complaint verification recorded"))
                 if len(parts)==4 and parts[3] == "analysis" and method == "GET": return self.send(*ok(rows(c,"SELECT * FROM ai_analyses WHERE complaint_id=? ORDER BY created_at DESC",(cid,))))
                 if method in ("PATCH", "PUT"):
+                    actor, failure = require_role(self, ("CITIZEN", "AUTHORITY", "ADMIN"))
+                    if failure: return self.send(*failure)
                     p=self.body() or {}; e=validate(p,True)
                     if e:return self.send(*err("VALIDATION_ERROR",e))
                     if "status" in p and p["status"] not in TRANSITIONS.get(complaint["status"],set()): return self.send(*err("INVALID_TRANSITION",f"Cannot transition {complaint['status']} to {p['status']}",409))
                     fields=[k for k in p if k in ("title","description","category","location","latitude","longitude","ward","priority","status","assigned_department_id")]
                     if not fields: return self.send(*err("VALIDATION_ERROR", "No supported fields supplied", 422))
-                    actor = auth(self); actor_id = actor["id"] if actor else complaint["user_id"]
+                    if actor["role"] == "CITIZEN" and actor["id"] != complaint["user_id"]: return self.send(*err("FORBIDDEN", "Citizens may only update their own complaints", 403))
+                    if actor["role"] == "CITIZEN" and any(k in p for k in ("status", "priority", "assigned_department_id")): return self.send(*err("FORBIDDEN", "Administrative fields require authority access", 403))
+                    actor_id = actor["id"]
                     c.execute(f"UPDATE complaints SET {','.join(x+'=?' for x in fields)},updated_at=? WHERE id=?",[p[x] for x in fields]+[now(),cid]); audit(c,actor_id,"COMPLAINT_UPDATED","complaint",cid,p); c.commit(); return self.send(*ok(one(c,"SELECT * FROM complaints WHERE id=?",(cid,)),"Complaint updated"))
                 if method=="DELETE": c.execute("DELETE FROM complaints WHERE id=?",(cid,)); c.commit(); return self.send(*ok(None,"Complaint deleted"))
                 return self.send(*ok(complaint))
@@ -270,8 +276,10 @@ class Handler(BaseHTTPRequestHandler):
                 if target not in TRANSITIONS.get(complaint["status"], set()): return self.send(*err("INVALID_TRANSITION", f"Cannot verify complaint in {complaint['status']} state", 409))
                 c.execute("UPDATE complaints SET status=?,updated_at=? WHERE id=?",(target,now(),cid)); audit(c,user["id"],"CITIZEN_VERIFICATION","complaint",cid,{"accepted":target=="RESOLVED"}); c.commit(); return self.send(*ok(one(c,"SELECT * FROM complaints WHERE id=?",(cid,)),"Complaint verification recorded"))
             if path == "/api/analytics/categories" and method=="GET": return self.send(*ok(rows(c,"SELECT category,COUNT(*) AS count FROM complaints GROUP BY category ORDER BY count DESC")))
+            if path == "/api/categories" and method=="GET": return self.send(*ok(rows(c,"SELECT category,COUNT(*) AS count FROM complaints GROUP BY category ORDER BY count DESC")))
             if path == "/api/analytics/departments" and method=="GET": return self.send(*ok(rows(c,"SELECT d.id,d.name,COUNT(c.id) AS complaintCount,SUM(c.status='RESOLVED') AS resolvedCount FROM departments d LEFT JOIN complaints c ON c.assigned_department_id=d.id GROUP BY d.id ORDER BY complaintCount DESC")))
             if path == "/api/analytics/trends" and method=="GET": return self.send(*ok(rows(c,"SELECT substr(created_at,1,10) AS date,COUNT(*) AS count FROM complaints GROUP BY date ORDER BY date")))
+            if path == "/api/trends" and method=="GET": return self.send(*ok(rows(c,"SELECT substr(created_at,1,10) AS date,COUNT(*) AS count FROM complaints GROUP BY date ORDER BY date")))
             if path == "/api/analytics" and method=="GET": return self.send(*ok({"totalComplaints":c.execute("SELECT COUNT(*) FROM complaints").fetchone()[0],"activeComplaints":c.execute("SELECT COUNT(*) FROM complaints WHERE status NOT IN ('RESOLVED','REJECTED')").fetchone()[0],"criticalComplaints":c.execute("SELECT COUNT(*) FROM complaints WHERE priority='CRITICAL'").fetchone()[0],"systemicIssues":c.execute("SELECT COUNT(*) FROM systemic_issues").fetchone()[0],"resolutionRate":c.execute("SELECT COALESCE(AVG(status='RESOLVED')*100,0) FROM complaints").fetchone()[0],"categories":rows(c,"SELECT category,COUNT(*) AS count FROM complaints GROUP BY category"),"recent":rows(c,"SELECT * FROM complaints ORDER BY created_at DESC LIMIT 10")}))
             if path.startswith("/api/map-data") and method=="GET": return self.send(*ok(rows(c,"SELECT id,latitude,longitude,priority,category,cluster_id AS clusterId,ward FROM complaints WHERE latitude IS NOT NULL AND longitude IS NOT NULL LIMIT 500")))
             return self.send(*err("NOT_FOUND","Endpoint not found",404))
