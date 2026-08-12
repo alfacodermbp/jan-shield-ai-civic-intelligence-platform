@@ -1,0 +1,11 @@
+{
+  "name": "jan-shield-ai",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "start": "python3 -m backend.app",
+    "dev": "python3 -m backend.app",
+    "seed": "python3 -m backend.seed",
+    "test": "python3 -m unittest discover -s backend/tests -p 'test_*.py' -v"
+  }
+}
