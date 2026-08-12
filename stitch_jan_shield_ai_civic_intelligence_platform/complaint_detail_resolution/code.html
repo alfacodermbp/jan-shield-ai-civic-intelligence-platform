@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Complaint Detail - JAN-SHIELD AI</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "surface-container-low": "#f6f3f5",
+                        "tertiary": "#000000",
+                        "inverse-on-surface": "#f3f0f2",
+                        "primary-fixed": "#dae2fd",
+                        "on-secondary-fixed": "#00174b",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "on-secondary-container": "#fefcff",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#316bf3",
+                        "secondary-fixed": "#dbe1ff",
+                        "on-surface": "#1b1b1d",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#271901",
+                        "inverse-surface": "#303032",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#98805d",
+                        "surface-variant": "#e4e2e4",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-bright": "#fcf8fa",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-surface-variant": "#45464d",
+                        "on-primary-container": "#7c839b",
+                        "tertiary-fixed": "#fcdeb5",
+                        "tertiary-container": "#271901",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "primary": "#000000",
+                        "on-primary-fixed": "#131b2e",
+                        "inverse-primary": "#bec6e0",
+                        "outline-variant": "#c6c6cd",
+                        "surface": "#fcf8fa",
+                        "surface-container-high": "#eae7e9",
+                        "background": "#fcf8fa",
+                        "on-background": "#1b1b1d",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#565e74",
+                        "outline": "#76777d",
+                        "primary-container": "#131b2e",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#f0edef",
+                        "secondary": "#0051d5",
+                        "surface-dim": "#dcd9db",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "margin-desktop": "40px",
+                        "xs": "4px",
+                        "xl": "48px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-h1": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "button-text": ["Inter"],
+                        "headline-h1-mobile": ["Inter"],
+                        "headline-h3": ["Inter"],
+                        "headline-h4": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-h2": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-h1": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "button-text": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-h1-mobile": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-h3": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-h4": ["20px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-h2": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Subtle grid background for the canvas */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(198, 198, 205, 0.2) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(198, 198, 205, 0.2) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen bg-grid-pattern flex flex-col">
+<!-- Canvas Container -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+<!-- Back Navigation (Task-Focused View) -->
+<nav class="mb-lg">
+<button class="flex items-center gap-xs text-secondary hover:text-on-secondary-fixed-variant transition-colors font-button-text text-button-text group">
+<span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                Back to Citizen Requests
+            </button>
+</nav>
+<!-- Header Section -->
+<header class="mb-xl flex flex-col md:flex-row md:items-start justify-between gap-md">
+<div>
+<div class="flex items-center gap-sm mb-unit">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Case #REQ-8892-AZ</span>
+<span class="inline-flex items-center gap-xs px-sm py-unit bg-surface-container-high rounded-lg font-label-caps text-label-caps text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                        Oct 24, 2024
+                    </span>
+</div>
+<h1 class="font-headline-h2 text-headline-h2 text-on-surface mb-sm">Severe Road Subsidence on Main Arterial</h1>
+<div class="flex flex-wrap items-center gap-sm mt-sm">
+<!-- Status Badge -->
+<div class="inline-flex items-center gap-xs px-sm py-unit bg-secondary-fixed-dim bg-opacity-30 border border-secondary text-secondary rounded-lg font-label-caps text-label-caps">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                        Action Initiated
+                    </div>
+<!-- Priority Badge -->
+<div class="inline-flex items-center gap-xs px-sm py-unit bg-error-container text-on-error-container rounded-lg font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[14px] filled">warning</span>
+                        High Priority
+                    </div>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="px-md py-sm bg-surface-container-lowest border border-outline text-on-surface rounded-xl font-button-text text-button-text hover:bg-surface-container-low transition-colors shadow-sm flex items-center gap-xs">
+<span class="material-symbols-outlined">print</span>
+                    Print Record
+                </button>
+</div>
+</header>
+<!-- Main Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Left Column: Content & Timeline (Span 8) -->
+<div class="lg:col-span-8 flex flex-col gap-lg">
+<!-- Description Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden hover:border-secondary transition-colors duration-300">
+<div class="p-md border-b border-outline-variant bg-surface-bright">
+<h2 class="font-headline-h4 text-headline-h4 text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">subject</span>
+                            Report Details
+                        </h2>
+</div>
+<div class="p-md">
+<p class="font-body-md text-body-md text-on-surface-variant mb-md leading-relaxed">
+                            A significant section of the northbound lane on Grand Avenue has collapsed, creating a hazard approximately 4 feet wide and 2 feet deep. The subsidence appears to be expanding due to recent heavy rainfall. Vehicles are forced to swerve into the oncoming lane to avoid it, creating a severe risk of head-on collisions. Immediate barricading and assessment are required.
+                        </p>
+<div class="grid grid-cols-2 gap-md pt-sm border-t border-outline-variant border-dashed">
+<div>
+<span class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">Reported By</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Citizen ID: CIT-8821 (Verified)</span>
+</div>
+<div>
+<span class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">Category</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Infrastructure / Roadways</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Evidence Gallery -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden hover:border-secondary transition-colors duration-300">
+<div class="p-md border-b border-outline-variant bg-surface-bright flex justify-between items-center">
+<h2 class="font-headline-h4 text-headline-h4 text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">photo_library</span>
+                            Evidence Attached (2)
+                        </h2>
+</div>
+<div class="p-md grid grid-cols-1 sm:grid-cols-2 gap-md">
+<!-- Evidence Item 1 -->
+<div class="relative group cursor-pointer overflow-hidden rounded-lg border border-outline-variant">
+<div class="aspect-video w-full">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A sharp, high-resolution photograph showing a deep, dangerous pothole and road subsidence on an urban asphalt street. The scene is brightly lit by daylight, emphasizing the cracked pavement and the depth of the hole. The visual style is documentary and objective, suitable for a civic oversight platform. The overall color palette is cool and neutral, with the rough concrete textures contrasting against the dark shadow within the rupture. A bright orange traffic cone is partially visible in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3mkwFOuZEG_5459_yr0lRyoOh-1hUa6jnl_m7lR_rm7xrKrAFZf1knYp9oqfkb9LS0V6HW2muWxDX8RmlhslKmphwY3Urb-JIH3ai2HeXZ_M8YK-Q6gSIILrWQhyS6IPrvS9_UrFHucxiwWbj814uL3dFIcWxtauEYjCA576f_A_rR4aN23PUpKB1-qMn0w1h3uOLboRsqlaQIBVDW003QhsgbOi5b-BITd5ON-7dsY3Jn7_SBA8a"/>
+</div>
+<div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary opacity-0 group-hover:opacity-100 transition-opacity">zoom_in</span>
+</div>
+</div>
+<!-- Evidence Item 2 -->
+<div class="relative group cursor-pointer overflow-hidden rounded-lg border border-outline-variant">
+<div class="aspect-video w-full">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A medium-shot photograph of a municipal street corner during the day, focusing on a collapsed section of the roadway near a storm drain. The lighting is harsh and realistic, highlighting the broken asphalt and underlying dirt. The aesthetic is straightforward and analytical, fitting for a government reporting system. The color scheme is dominated by asphalt greys, blacks, and subtle earthy tones of the exposed soil, projecting a serious tone of infrastructure failure." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaslggRi5F9QK-IxDsCoqdOQpAUb2WzhV2mkyg6V9R_-zI1-5rCe0wuLrSSWJsQ4eHKuk_vTWMzk-LQNvMJi6A-iXFr4agXKy2tulktJJYqGmr1B4OMAsS0-6LmeCIoiCvoH_abGQp9u-cQvPLCoWvslW9075wo29zudjK22Q5O6jTr255XS3_QVqdjN7togCYBglqA_OzNCwrO0MqBQVH26i202My4NFgMxj-uTDWQ1iuNbIiSyG6"/>
+</div>
+<div class="absolute inset-0 bg-primary bg-opacity-0 group-hover:bg-opacity-20 transition-all flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary opacity-0 group-hover:opacity-100 transition-opacity">zoom_in</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Location Map -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden hover:border-secondary transition-colors duration-300">
+<div class="p-md border-b border-outline-variant bg-surface-bright flex justify-between items-center">
+<h2 class="font-headline-h4 text-headline-h4 text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">location_on</span>
+                            Incident Location
+                        </h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">45.5122° N, 122.6587° W</span>
+</div>
+<div class="relative w-full h-64 bg-surface-container-low" data-location="Metropolis" style="">
+<div class="w-full h-full bg-cover bg-center" data-alt="A clean, modern satellite map view of an urban grid in Metropolis. The map uses a muted, professional color palette typical of high-end government software, predominantly featuring subtle greys, desaturated blues, and pale greens for parks. A distinct, glowing red pin marker sits centrally on an arterial road, indicating a high-priority incident location. The UI feels sterile, precise, and highly analytical." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB3EROL6GxqUbCcKZ3N8Gwcf-8iBLcliOPZjV_Bimf4Wh0IRSrgeiPuHHYGhiZe6s8j7Tye6XIQhn16NjybafNkludOlySNli_5aNoiE91N01J7BZFHah7YopTFNDsYPLXGi5xOSENC_G86gQdxJCVxq1wgTaB-_VPzlQslxWByNe8Ow9OhaXWvY1letowH0n4vENU6eOGMV_EIW_IF_4UeaZNYO0ZlSesVLZmkj4yfxu43rN9Gxlta')"></div>
+<div class="absolute bottom-md right-md bg-surface-container-lowest p-sm rounded shadow-sm border border-outline-variant flex flex-col gap-xs">
+<button class="p-xs hover:bg-surface-container-low rounded"><span class="material-symbols-outlined text-[20px]">add</span></button>
+<div class="h-px w-full bg-outline-variant"></div>
+<button class="p-xs hover:bg-surface-container-low rounded"><span class="material-symbols-outlined text-[20px]">remove</span></button>
+</div>
+</div>
+<div class="p-sm bg-surface-container-low border-t border-outline-variant">
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">signpost</span>
+                            Near intersection of Grand Ave and 4th St, Northbound lane.
+                        </p>
+</div>
+</section>
+</div>
+<!-- Right Column: AI Insights & Authority Actions (Span 4) -->
+<div class="lg:col-span-4 flex flex-col gap-lg">
+<!-- AI Insight Card (Glassmorphism / Technical) -->
+<section class="bg-inverse-surface text-inverse-on-surface border border-outline rounded-xl shadow-md overflow-hidden relative">
+<!-- Decorative subtle glow -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-fixed rounded-full blur-3xl opacity-20 -mr-10 -mt-10 pointer-events-none"></div>
+<div class="p-md border-b border-outline bg-tertiary bg-opacity-50">
+<h2 class="font-headline-h4 text-headline-h4 flex items-center gap-sm text-primary-fixed">
+<span class="material-symbols-outlined text-primary-fixed">psychology</span>
+                            JAN-SHIELD Analysis
+                        </h2>
+</div>
+<div class="p-md space-y-md">
+<!-- Sentiment / Severity -->
+<div class="flex justify-between items-center bg-surface bg-opacity-10 p-sm rounded-lg border border-outline">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-primary-fixed-dim opacity-70">Assessed Severity</span>
+<span class="font-body-lg text-body-lg font-semibold text-error-container flex items-center gap-xs">
+                                    CRITICAL
+                                    <span class="material-symbols-outlined text-[16px] filled">arrow_upward</span>
+</span>
+</div>
+<div class="w-12 h-12 rounded-full border-2 border-error-container flex items-center justify-center">
+<span class="font-body-sm text-body-sm font-bold text-error-container">98%</span>
+</div>
+</div>
+<!-- Analysis Points -->
+<ul class="space-y-sm">
+<li class="flex items-start gap-xs">
+<span class="material-symbols-outlined text-[18px] text-primary-fixed mt-xs">check_circle</span>
+<span class="font-body-sm text-body-sm opacity-90">Image analysis confirms structural failure exceeding standard maintenance parameters.</span>
+</li>
+<li class="flex items-start gap-xs">
+<span class="material-symbols-outlined text-[18px] text-primary-fixed mt-xs">check_circle</span>
+<span class="font-body-sm text-body-sm opacity-90">Cross-referenced weather data: recent heavy rainfall correlates with typical sinkhole genesis in this sector.</span>
+</li>
+</ul>
+<!-- Related Items -->
+<div class="pt-sm border-t border-outline">
+<span class="font-label-caps text-label-caps text-primary-fixed-dim opacity-70 mb-sm block">Similar Historic Cases</span>
+<div class="space-y-xs">
+<a class="flex items-center justify-between p-xs hover:bg-surface hover:bg-opacity-10 rounded transition-colors group" href="#">
+<span class="font-body-sm text-body-sm group-hover:text-primary-fixed transition-colors">REQ-7102-AZ (Resolved)</span>
+<span class="material-symbols-outlined text-[16px] opacity-50 group-hover:opacity-100 group-hover:text-primary-fixed">open_in_new</span>
+</a>
+<a class="flex items-center justify-between p-xs hover:bg-surface hover:bg-opacity-10 rounded transition-colors group" href="#">
+<span class="font-body-sm text-body-sm group-hover:text-primary-fixed transition-colors">REQ-4490-AZ (Resolved)</span>
+<span class="material-symbols-outlined text-[16px] opacity-50 group-hover:opacity-100 group-hover:text-primary-fixed">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Authority Actions Sidebar -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden hover:border-secondary transition-colors duration-300">
+<div class="p-md border-b border-outline-variant bg-surface-bright">
+<h2 class="font-headline-h4 text-headline-h4 text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">admin_panel_settings</span>
+                            Authority Controls
+                        </h2>
+</div>
+<div class="p-md space-y-md">
+<!-- Assign Department -->
+<div class="flex flex-col gap-xs">
+<label class="font-body-sm text-body-sm font-semibold text-on-surface">Assign Department</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface border border-outline-variant text-on-surface font-body-sm text-body-sm rounded-lg px-md py-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-shadow">
+<option>Dept. of Transportation (DOT)</option>
+<option>Public Works - Water</option>
+<option>Emergency Services</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Update Status -->
+<div class="flex flex-col gap-xs">
+<label class="font-body-sm text-body-sm font-semibold text-on-surface">Update Status</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface border border-outline-variant text-on-surface font-body-sm text-body-sm rounded-lg px-md py-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-shadow">
+<option>Action Initiated</option>
+<option>Assigned to Crew</option>
+<option>Under Resolution</option>
+<option>Resolved</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Upload Evidence -->
+<div class="pt-sm border-t border-outline-variant border-dashed">
+<label class="font-body-sm text-body-sm font-semibold text-on-surface block mb-xs">Resolution Evidence</label>
+<button class="w-full py-sm px-md border-2 border-dashed border-outline-variant text-on-surface-variant hover:border-secondary hover:text-secondary rounded-lg font-button-text text-button-text transition-colors flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">upload_file</span>
+                                Upload Documents
+                            </button>
+</div>
+<!-- Submit Action -->
+<button class="w-full py-sm px-md bg-primary text-on-primary rounded-xl font-button-text text-button-text hover:opacity-90 transition-opacity flex items-center justify-center gap-xs shadow-sm mt-md">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                            Save Changes
+                        </button>
+</div>
+</section>
+<!-- Process Timeline -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden p-md">
+<h3 class="font-headline-h4 text-headline-h4 text-on-surface mb-md">Resolution Timeline</h3>
+<div class="relative border-l-2 border-surface-dim ml-sm pl-md space-y-md">
+<!-- Step 1 -->
+<div class="relative">
+<div class="absolute -left-[27px] top-1 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[12px] filled">check</span>
+</div>
+<h4 class="font-body-sm text-body-sm font-semibold text-on-surface">Submitted</h4>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-xs">Oct 24, 08:14 AM</p>
+</div>
+<!-- Step 2 -->
+<div class="relative">
+<div class="absolute -left-[27px] top-1 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[12px] filled">check</span>
+</div>
+<h4 class="font-body-sm text-body-sm font-semibold text-on-surface">Analyzed by AI</h4>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-xs">Oct 24, 08:16 AM</p>
+</div>
+<!-- Step 3 (Current) -->
+<div class="relative">
+<div class="absolute -left-[27px] top-1 w-5 h-5 rounded-full bg-surface-container-lowest border-2 border-secondary flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+</div>
+<h4 class="font-body-sm text-body-sm font-semibold text-secondary">Action Initiated</h4>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-xs">Oct 24, 09:30 AM</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Assigned to DOT Emergency Response Team.</p>
+</div>
+<!-- Step 4 (Future) -->
+<div class="relative">
+<div class="absolute -left-[27px] top-1 w-5 h-5 rounded-full bg-surface-container-lowest border-2 border-outline-variant flex items-center justify-center">
+</div>
+<h4 class="font-body-sm text-body-sm font-semibold text-on-surface-variant">Under Resolution</h4>
+<p class="font-label-caps text-label-caps text-outline-variant mt-xs">Pending</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</body></html>

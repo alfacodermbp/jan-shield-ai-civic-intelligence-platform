@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Authority Analytics - JAN-SHIELD AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#ffdad6",
+                      "background": "#fcf8fa",
+                      "tertiary-fixed-dim": "#dec29a",
+                      "on-secondary-container": "#fefcff",
+                      "on-secondary-fixed": "#00174b",
+                      "surface-container": "#f0edef",
+                      "secondary-fixed-dim": "#b4c5ff",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed": "#dbe1ff",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#1b1b1d",
+                      "on-background": "#1b1b1d",
+                      "on-error": "#ffffff",
+                      "inverse-primary": "#bec6e0",
+                      "on-primary-container": "#7c839b",
+                      "primary-fixed-dim": "#bec6e0",
+                      "surface-container-highest": "#e4e2e4",
+                      "on-primary-fixed": "#131b2e",
+                      "secondary": "#0051d5",
+                      "on-surface-variant": "#45464d",
+                      "primary-fixed": "#dae2fd",
+                      "primary": "#000000",
+                      "surface-tint": "#565e74",
+                      "surface-bright": "#fcf8fa",
+                      "on-tertiary-fixed-variant": "#574425",
+                      "on-tertiary-fixed": "#271901",
+                      "surface-dim": "#dcd9db",
+                      "primary-container": "#131b2e",
+                      "tertiary-fixed": "#fcdeb5",
+                      "on-secondary-fixed-variant": "#003ea8",
+                      "error": "#ba1a1a",
+                      "inverse-surface": "#303032",
+                      "secondary-container": "#316bf3",
+                      "tertiary-container": "#271901",
+                      "surface-container-high": "#eae7e9",
+                      "on-tertiary-container": "#98805d",
+                      "inverse-on-surface": "#f3f0f2",
+                      "surface-container-lowest": "#ffffff",
+                      "outline": "#76777d",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "on-secondary": "#ffffff",
+                      "outline-variant": "#c6c6cd",
+                      "surface": "#fcf8fa",
+                      "tertiary": "#000000",
+                      "surface-container-low": "#f6f3f5",
+                      "on-error-container": "#93000a",
+                      "surface-variant": "#e4e2e4"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "xl": "48px",
+                      "margin-mobile": "16px",
+                      "container-max": "1440px",
+                      "gutter": "24px",
+                      "margin-desktop": "40px",
+                      "unit": "4px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "xs": "4px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "headline-h1-mobile": [
+                              "Inter"
+                      ],
+                      "button-text": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "headline-h4": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-h3": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "headline-h1": [
+                              "Inter"
+                      ],
+                      "headline-h2": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-h1-mobile": [
+                              "30px",
+                              {
+                                      "lineHeight": "36px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "button-text": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-h4": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "letterSpacing": "0em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-h3": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-h1": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-h2": [
+                              "30px",
+                              {
+                                      "lineHeight": "38px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chart-grid {
+            background-image: 
+                linear-gradient(to right, #f0edef 1px, transparent 1px),
+                linear-gradient(to bottom, #f0edef 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-lowest text-primary hidden md:flex flex-col h-screen p-md fixed left-0 top-0 z-40 border-r border-outline-variant shadow-md w-64">
+<div class="mb-lg">
+<div class="flex items-center gap-sm mb-xs">
+<img alt="Department seal" class="w-8 h-8 rounded-full object-cover" data-alt="A small, highly detailed, minimalist official government seal or department logo. The design is sleek, modern, and vector-style, using strict deep navy and slate gray tones. The seal features abstract geometric shapes representing data nodes and civic buildings, set against a crisp white background. The lighting is even and flat, emphasizing the clean lines and authoritative nature of the institutional branding. 4k resolution, UI asset." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeZMG6x6sBRif3gQN2ACVDpxPBwIIZbg-OdhPfXGB5F0n67nkU3zbTJ8_0gOOQRyMU4SGReHcyqKq7TCm8QwHXfUOv9m0Z1xBLDKF7BrLRHfdAb74FOCeD-Qdp0Oy49TbMAcQWG0VPZzb4q9s5RH--wMh-UoHAlmIuDJm61Kz2AFN7lZMmsHEVVpi74hYT6bAwDMgJyLogbrkQUprxPgzpxboRN7VATDefThx3lErELtXlOxeNRY7N"/>
+<h1 class="font-headline-h4 text-headline-h4 font-bold text-primary">JAN-SHIELD AI</h1>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Civic Oversight Engine</p>
+</div>
+<button class="bg-primary-container text-on-primary w-full py-2 rounded-xl mb-md font-button-text text-button-text flex justify-center items-center gap-xs hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+            Emergency Alert
+        </button>
+<div class="flex flex-col gap-unit flex-grow">
+<!-- Nav Item 1 -->
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span class="font-button-text text-button-text">Overview</span>
+</a>
+<!-- Nav Item 2 -->
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="how_to_reg">how_to_reg</span>
+<span class="font-button-text text-button-text">Citizen Requests</span>
+</a>
+<!-- Nav Item 3 (Active) -->
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg bg-secondary-container text-on-secondary-container font-bold opacity-80 transition-all scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="psychology">psychology</span>
+<span class="font-button-text text-button-text">Analytics</span>
+</a>
+<!-- Nav Item 4 -->
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_balance">account_balance</span>
+<span class="font-button-text text-button-text">Authority Panel</span>
+</a>
+<!-- Nav Item 5 -->
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="inventory_2">inventory_2</span>
+<span class="font-button-text text-button-text">Archives</span>
+</a>
+</div>
+<div class="mt-auto border-t border-outline-variant pt-sm">
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+<span class="font-button-text text-button-text">Support</span>
+</a>
+<a class="flex items-center gap-sm px-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span class="font-button-text text-button-text">Settings</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 flex flex-col min-h-screen md:ml-64 bg-background">
+<!-- TopNavBar (Mobile mainly, but visible if needed per rules, though side nav is primary on desktop. Kept for full compliance and search/profile) -->
+<header class="bg-surface text-primary border-b border-outline-variant shadow-sm w-full top-0 z-30 sticky flex justify-between items-center px-gutter max-w-container-max mx-auto h-16 md:hidden">
+<!-- Simplified for mobile view to not clash heavily with side nav -->
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+<h2 class="font-headline-h3 text-headline-h3 font-bold text-primary">JAN-SHIELD AI</h2>
+</div>
+</header>
+<!-- Main Workspace -->
+<main class="flex-1 p-margin-mobile md:p-margin-desktop max-w-container-max mx-auto w-full">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-lg gap-md">
+<div>
+<h1 class="font-headline-h2 text-headline-h2 text-on-background mb-unit">Authority Analytics</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Comprehensive overview of civic infrastructure performance and issue resolution.</p>
+</div>
+<div class="flex items-center gap-md">
+<!-- Date Picker Mock -->
+<div class="flex items-center gap-sm bg-surface-container-lowest border border-outline-variant rounded-lg px-sm py-2 shadow-sm text-on-surface">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">calendar_month</span>
+<span class="font-button-text text-button-text">Last 30 Days</span>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">arrow_drop_down</span>
+</div>
+<!-- Export Button -->
+<button class="bg-primary-container text-on-primary px-md py-2 rounded-lg font-button-text text-button-text flex items-center gap-xs hover:opacity-90 transition-opacity shadow-sm">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Export Data
+                    </button>
+</div>
+</div>
+<!-- KPI Summary Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md mb-lg">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:border-secondary transition-colors group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary-fixed opacity-20 rounded-bl-full -mr-8 -mt-8 group-hover:scale-110 transition-transform"></div>
+<div class="flex justify-between items-start mb-sm">
+<h3 class="font-body-sm text-body-sm text-on-surface-variant font-semibold">Total Complaints</h3>
+<span class="material-symbols-outlined text-primary-container bg-primary-fixed rounded-lg p-unit text-[20px]">report</span>
+</div>
+<div class="flex items-baseline gap-sm">
+<span class="font-headline-h1 text-headline-h1 text-on-background">12,482</span>
+</div>
+<div class="flex items-center gap-xs mt-unit text-error font-button-text text-button-text">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+5.2% vs last month</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:border-secondary transition-colors group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-secondary-fixed opacity-20 rounded-bl-full -mr-8 -mt-8 group-hover:scale-110 transition-transform"></div>
+<div class="flex justify-between items-start mb-sm">
+<h3 class="font-body-sm text-body-sm text-on-surface-variant font-semibold">Resolution Rate</h3>
+<span class="material-symbols-outlined text-secondary bg-secondary-fixed rounded-lg p-unit text-[20px]">check_circle</span>
+</div>
+<div class="flex items-baseline gap-sm">
+<span class="font-headline-h1 text-headline-h1 text-on-background">78%</span>
+</div>
+<div class="flex items-center gap-xs mt-unit text-secondary font-button-text text-button-text">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+2.1% vs last month</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:border-secondary transition-colors group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary-fixed opacity-20 rounded-bl-full -mr-8 -mt-8 group-hover:scale-110 transition-transform"></div>
+<div class="flex justify-between items-start mb-sm">
+<h3 class="font-body-sm text-body-sm text-on-surface-variant font-semibold">Avg. Resolution Time</h3>
+<span class="material-symbols-outlined text-tertiary bg-tertiary-fixed rounded-lg p-unit text-[20px]">timer</span>
+</div>
+<div class="flex items-baseline gap-sm">
+<span class="font-headline-h1 text-headline-h1 text-on-background">4.2d</span>
+</div>
+<div class="flex items-center gap-xs mt-unit text-secondary font-button-text text-button-text">
+<span class="material-symbols-outlined text-[16px]">trending_down</span>
+<span>-0.8d vs last month</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:border-secondary transition-colors group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-surface-container-highest opacity-50 rounded-bl-full -mr-8 -mt-8 group-hover:scale-110 transition-transform"></div>
+<div class="flex justify-between items-start mb-sm">
+<h3 class="font-body-sm text-body-sm text-on-surface-variant font-semibold">Satisfaction Score</h3>
+<span class="material-symbols-outlined text-on-surface bg-surface-container-highest rounded-lg p-unit text-[20px]">sentiment_satisfied</span>
+</div>
+<div class="flex items-baseline gap-sm">
+<span class="font-headline-h1 text-headline-h1 text-on-background">4.1</span>
+<span class="font-body-md text-body-md text-on-surface-variant">/ 5</span>
+</div>
+<div class="flex items-center gap-xs mt-unit text-on-surface-variant font-button-text text-button-text">
+<span class="material-symbols-outlined text-[16px]">horizontal_rule</span>
+<span>No change</span>
+</div>
+</div>
+</div>
+<!-- Bento Grid Content Area -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-md">
+<!-- Large Line Chart: Complaint Volume Trends (Spans 2 columns) -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:border-secondary transition-colors flex flex-col">
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-headline-h4 text-headline-h4 text-on-background">Complaint Volume Trends</h2>
+<div class="flex gap-sm">
+<span class="flex items-center gap-xs font-label-caps text-label-caps text-on-surface-variant">
+<span class="w-3 h-3 rounded-full bg-primary-container"></span> Critical
+                            </span>
+<span class="flex items-center gap-xs font-label-caps text-label-caps text-on-surface-variant">
+<span class="w-3 h-3 rounded-full bg-secondary-fixed"></span> Standard
+                            </span>
+</div>
+</div>
+<div class="flex-1 relative w-full h-64 bg-surface chart-grid rounded-lg border border-outline-variant overflow-hidden flex items-end px-md pb-md pt-lg gap-2">
+<!-- Simulated Line Chart with Bars for simplicity in HTML, styled as area/line mix -->
+<div class="absolute inset-0 opacity-10 bg-gradient-to-t from-primary-container to-transparent z-0"></div>
+<!-- Mock Data Points (Standard) -->
+<div class="relative z-10 w-full h-full flex items-end justify-between px-2">
+<div class="w-1/12 bg-secondary-fixed h-[30%] rounded-t-sm hover:bg-secondary transition-colors cursor-pointer" title="Jan: 30%"></div>
+<div class="w-1/12 bg-secondary-fixed h-[45%] rounded-t-sm hover:bg-secondary transition-colors cursor-pointer" title="Feb: 45%"></div>
+<div class="w-1/12 bg-secondary-fixed h-[40%] rounded-t-sm hover:bg-secondary transition-colors cursor-pointer" title="Mar: 40%"></div>
+<div class="w-1/12 bg-secondary-fixed h-[60%] rounded-t-sm hover:bg-secondary transition-colors cursor-pointer" title="Apr: 60%"></div>
+<div class="w-1/12 bg-secondary-fixed h-[55%] rounded-t-sm hover:bg-secondary transition-colors cursor-pointer" title="May: 55%"></div>
+<div class="w-1/12 bg-secondary-fixed h-[70%] rounded-t-sm hover:bg-secondary transition-colors cursor-pointer" title="Jun: 70%"></div>
+</div>
+<!-- Mock Data Points (Critical) overlapping slightly for visual effect -->
+<div class="absolute z-20 w-full h-full flex items-end justify-between px-2 pointer-events-none pb-md">
+<div class="w-1/12 bg-primary-container h-[10%] rounded-t-sm opacity-80"></div>
+<div class="w-1/12 bg-primary-container h-[15%] rounded-t-sm opacity-80"></div>
+<div class="w-1/12 bg-primary-container h-[20%] rounded-t-sm opacity-80"></div>
+<div class="w-1/12 bg-primary-container h-[12%] rounded-t-sm opacity-80"></div>
+<div class="w-1/12 bg-primary-container h-[25%] rounded-t-sm opacity-80"></div>
+<div class="w-1/12 bg-primary-container h-[18%] rounded-t-sm opacity-80"></div>
+</div>
+</div>
+<div class="flex justify-between mt-sm font-label-caps text-label-caps text-on-surface-variant px-md">
+<span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+</div>
+</div>
+<!-- Category Distribution (Doughnut Chart Mock) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:border-secondary transition-colors flex flex-col items-center">
+<h2 class="font-headline-h4 text-headline-h4 text-on-background w-full text-left mb-md">Category Distribution</h2>
+<div class="relative w-48 h-48 mb-md">
+<!-- Mock Doughnut using borders -->
+<div class="absolute inset-0 rounded-full border-[16px] border-surface-container"></div>
+<div class="absolute inset-0 rounded-full border-[16px] border-primary-container" style="clip-path: polygon(50% 50%, 100% 0, 100% 100%, 50% 100%);"></div>
+<div class="absolute inset-0 rounded-full border-[16px] border-secondary" style="clip-path: polygon(50% 50%, 0 100%, 0 0, 50% 0); transform: rotate(45deg);"></div>
+<div class="absolute inset-0 rounded-full border-[16px] border-tertiary-fixed" style="clip-path: polygon(50% 50%, 100% 0, 50% 0); transform: rotate(-45deg);"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center bg-surface-container-lowest rounded-full m-[16px]">
+<span class="font-headline-h3 text-headline-h3 text-on-background font-bold">12.4k</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Total</span>
+</div>
+</div>
+<div class="w-full flex flex-col gap-sm">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-xs font-body-sm text-body-sm">
+<span class="w-3 h-3 rounded-full bg-primary-container"></span> Roads &amp; Transport
+                            </div>
+<span class="font-button-text text-button-text">45%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-xs font-body-sm text-body-sm">
+<span class="w-3 h-3 rounded-full bg-secondary"></span> Waste Management
+                            </div>
+<span class="font-button-text text-button-text">30%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-xs font-body-sm text-body-sm">
+<span class="w-3 h-3 rounded-full bg-tertiary-fixed"></span> Water Supply
+                            </div>
+<span class="font-button-text text-button-text">15%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-xs font-body-sm text-body-sm">
+<span class="w-3 h-3 rounded-full bg-surface-container"></span> Other
+                            </div>
+<span class="font-button-text text-button-text">10%</span>
+</div>
+</div>
+</div>
+<!-- Department Performance (Bar Chart) -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:border-secondary transition-colors">
+<h2 class="font-headline-h4 text-headline-h4 text-on-background mb-md">Department Performance</h2>
+<div class="space-y-md">
+<!-- Dept 1 -->
+<div>
+<div class="flex justify-between font-body-sm text-body-sm mb-xs">
+<span>Municipal Sanitation</span>
+<span class="font-bold text-secondary">85% Resolved</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-secondary h-2 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<!-- Dept 2 -->
+<div>
+<div class="flex justify-between font-body-sm text-body-sm mb-xs">
+<span>Dept. of Transportation (DOT)</span>
+<span class="font-bold text-secondary">62% Resolved</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-secondary h-2 rounded-full" style="width: 62%"></div>
+</div>
+</div>
+<!-- Dept 3 -->
+<div>
+<div class="flex justify-between font-body-sm text-body-sm mb-xs">
+<span>Water Authority</span>
+<span class="font-bold text-secondary">91% Resolved</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2">
+<div class="bg-secondary h-2 rounded-full" style="width: 91%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Ward-wise Civic Health (Heatmap Mock) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:border-secondary transition-colors">
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-headline-h4 text-headline-h4 text-on-background">Ward-wise Civic Health</h2>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] cursor-pointer">more_vert</span>
+</div>
+<div class="grid grid-cols-4 gap-xs h-40">
+<!-- High density (Red/Error) -->
+<div class="bg-error-container rounded-sm flex items-center justify-center font-label-caps text-label-caps text-on-error-container cursor-help" title="Ward 1: Critical">W1</div>
+<div class="bg-surface-container rounded-sm flex items-center justify-center font-label-caps text-label-caps text-on-surface-variant cursor-help" title="Ward 2: Normal">W2</div>
+<div class="bg-secondary-fixed rounded-sm flex items-center justify-center font-label-caps text-label-caps text-on-secondary-fixed cursor-help" title="Ward 3: Good">W3</div>
+<div class="bg-error-container opacity-80 rounded-sm flex items-center justify-center font-label-caps text-label-caps text-on-error-container cursor-help" title="Ward 4: High">W4</div>
+<div class="bg-surface-container rounded-sm flex items-center justify-center font-label-caps text-label-caps text-on-surface-variant cursor-help" title="Ward 5: Normal">W5</div>
+<div class="bg-error rounded-sm flex items-center justify-center font-label-caps text-label-caps text-on-error cursor-help" title="Ward 6: Severe">W6</div>
+<div class="bg-surface-container rounded-sm flex items-center justify-center font-label-caps text-label-caps text-on-surface-variant cursor-help" title="Ward 7: Normal">W7</div>
+<div class="bg-secondary-fixed rounded-sm flex items-center justify-center font-label-caps text-label-caps text-on-secondary-fixed cursor-help" title="Ward 8: Good">W8</div>
+<div class="bg-secondary-fixed rounded-sm flex items-center justify-center font-label-caps text-label-caps text-on-secondary-fixed cursor-help" title="Ward 9: Good">W9</div>
+<div class="bg-surface-container rounded-sm flex items-center justify-center font-label-caps text-label-caps text-on-surface-variant cursor-help" title="Ward 10: Normal">W10</div>
+<div class="bg-error-container opacity-60 rounded-sm flex items-center justify-center font-label-caps text-label-caps text-on-error-container cursor-help" title="Ward 11: Elevated">W11</div>
+<div class="bg-surface-container rounded-sm flex items-center justify-center font-label-caps text-label-caps text-on-surface-variant cursor-help" title="Ward 12: Normal">W12</div>
+</div>
+<div class="flex justify-between items-center mt-sm font-label-caps text-label-caps text-on-surface-variant">
+<span>Healthy</span>
+<div class="flex h-2 w-24 bg-gradient-to-r from-secondary-fixed via-surface-container to-error rounded-full"></div>
+<span>Critical</span>
+</div>
+</div>
+<!-- Systemic Issue Growth (Area Chart - Full Width Bottom) -->
+<div class="lg:col-span-3 bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:border-secondary transition-colors relative overflow-hidden">
+<h2 class="font-headline-h4 text-headline-h4 text-on-background mb-md relative z-10">Systemic Issue Growth (AI Detected)</h2>
+<div class="h-48 w-full relative z-10 flex items-end">
+<div class="w-full h-full bg-surface chart-grid border border-outline-variant rounded-lg relative overflow-hidden">
+<!-- SVG Mock Area Chart for Systemic Issues -->
+<svg class="absolute bottom-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0,100 L0,80 Q25,60 50,70 T100,30 L100,100 Z" fill="#dae2fd" opacity="0.6"></path>
+<path d="M0,80 Q25,60 50,70 T100,30" fill="none" stroke="#00174b" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl px-gutter max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center bg-surface-container-low border-t border-outline-variant mt-auto">
+<div class="font-body-sm text-body-sm text-on-surface-variant mb-md md:mb-0">
+                © 2024 JAN-SHIELD AI. Institutional Governance Platform.
+            </div>
+<div class="flex flex-wrap gap-md">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary underline transition-all" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary underline transition-all" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary underline transition-all" href="#">Departmental Directory</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary underline transition-all" href="#">Security Protocol</a>
+</div>
+<div class="font-headline-h4 text-headline-h4 text-primary mt-md md:mt-0 font-bold">
+                JAN-SHIELD AI
+            </div>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Authority Command Center - JAN-SHIELD AI</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "surface-container-low": "#f6f3f5",
+                        "tertiary": "#000000",
+                        "inverse-on-surface": "#f3f0f2",
+                        "primary-fixed": "#dae2fd",
+                        "on-secondary-fixed": "#00174b",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "on-secondary-container": "#fefcff",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#316bf3",
+                        "secondary-fixed": "#dbe1ff",
+                        "on-surface": "#1b1b1d",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#271901",
+                        "inverse-surface": "#303032",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#98805d",
+                        "surface-variant": "#e4e2e4",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-bright": "#fcf8fa",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-surface-variant": "#45464d",
+                        "on-primary-container": "#7c839b",
+                        "tertiary-fixed": "#fcdeb5",
+                        "tertiary-container": "#271901",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "primary": "#000000",
+                        "on-primary-fixed": "#131b2e",
+                        "inverse-primary": "#bec6e0",
+                        "outline-variant": "#c6c6cd",
+                        "surface": "#fcf8fa",
+                        "surface-container-high": "#eae7e9",
+                        "background": "#fcf8fa",
+                        "on-background": "#1b1b1d",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#565e74",
+                        "outline": "#76777d",
+                        "primary-container": "#131b2e",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#f0edef",
+                        "secondary": "#0051d5",
+                        "surface-dim": "#dcd9db",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "margin-desktop": "40px",
+                        "xs": "4px",
+                        "xl": "48px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "headline-h1": ["Inter", "sans-serif"],
+                        "body-sm": ["Inter", "sans-serif"],
+                        "button-text": ["Inter", "sans-serif"],
+                        "headline-h1-mobile": ["Inter", "sans-serif"],
+                        "headline-h3": ["Inter", "sans-serif"],
+                        "headline-h4": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "headline-h2": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-h1": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "button-text": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-h1-mobile": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-h3": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-h4": ["20px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-h2": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-full font-body-sm flex overflow-hidden">
+<!-- SideNavBar Shell -->
+<nav class="hidden md:flex flex-col h-screen p-md fixed left-0 top-0 z-40 bg-surface-container-lowest border-r border-outline-variant shadow-md w-64 justify-between">
+<!-- Header -->
+<div class="mb-lg">
+<div class="flex items-center gap-sm mb-xs">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-sm">shield</span>
+</div>
+<h1 class="font-headline-h4 text-headline-h4 font-bold text-primary">JAN-SHIELD AI</h1>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Civic Oversight Engine</p>
+</div>
+<!-- Main Navigation -->
+<ul class="flex-1 space-y-sm">
+<li>
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-lg font-bold scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-button-text text-button-text">Overview</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-button-text text-button-text">Citizen Requests</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-button-text text-button-text">AI Insights</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">account_balance</span>
+<span class="font-button-text text-button-text">Authority Panel</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-button-text text-button-text">Archives</span>
+</a>
+</li>
+</ul>
+<!-- Footer Actions -->
+<div class="mt-auto space-y-sm border-t border-outline-variant pt-md">
+<button class="w-full bg-error text-on-error font-button-text text-button-text py-sm rounded-lg flex items-center justify-center gap-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">warning</span>
+                Emergency Alert
+            </button>
+<ul class="space-y-xs">
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg text-sm" href="#">
+<span class="material-symbols-outlined text-sm">help</span>
+<span>Support</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg text-sm" href="#">
+<span class="material-symbols-outlined text-sm">settings</span>
+<span>Settings</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-0 md:ml-64 flex flex-col h-screen overflow-hidden">
+<!-- Top App Bar / Search Header -->
+<header class="bg-surface border-b border-outline-variant px-gutter h-16 flex items-center justify-between shrink-0 shadow-sm z-30">
+<div>
+<h2 class="font-headline-h3 text-headline-h3 font-semibold text-on-surface">Command Center</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant hidden sm:block">Real-time intelligence across citizen grievances.</p>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden lg:block w-64">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-xl pr-sm py-sm bg-surface-container-low border border-outline-variant rounded-full font-body-sm text-body-sm focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all outline-none" placeholder="Search ID, Location, Issue..." type="text"/>
+</div>
+<button class="p-sm text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container overflow-hidden">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a government official or civic leader, neutral expression, soft studio lighting, modern light-mode interface context, conveying authority and trust." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYypmdlrRhcTzW7J4uKuKo1Zf7wl1F4T4ZIr3hFk5I4ioYHg8KRYwO1KJb7aNdfD88C2khLZ5kuQB-UWmxmkiScJbSDT1d9QpV9YxtrUFdEy7e4QMenryILPYyNjvlD_C1IBbg3OOrj1RHZrN1d4NttpyYiU3F_4zXzzq6BNhCGeFbvG8KRwnQpZzdIsuEMV-UmbsqAReNsXvRlBeqz3ImVBaHjA1h19CMs9nMDzSXo1AgF2ab_6nq"/>
+</div>
+</div>
+</header>
+<!-- Scrollable Canvas -->
+<div class="flex-1 overflow-y-auto p-md md:p-gutter scrollbar-hide bg-surface-bright">
+<div class="max-w-container-max mx-auto space-y-gutter">
+<!-- KPI Section -->
+<section class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-md">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md shadow-sm hover:border-secondary transition-colors">
+<div class="flex items-center justify-between mb-sm">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Total Complaints</span>
+<span class="material-symbols-outlined text-outline">folder_open</span>
+</div>
+<div class="font-headline-h2 text-headline-h2 font-semibold">12,450</div>
+<div class="text-secondary text-xs flex items-center gap-xs mt-xs">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> +5.2% vs last mo
+                        </div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md shadow-sm hover:border-secondary transition-colors">
+<div class="flex items-center justify-between mb-sm">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Active</span>
+<span class="material-symbols-outlined text-outline">pending_actions</span>
+</div>
+<div class="font-headline-h2 text-headline-h2 font-semibold text-secondary">3,102</div>
+<div class="text-on-surface-variant text-xs mt-xs">Currently open</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md shadow-sm hover:border-secondary transition-colors border-l-4 border-l-error">
+<div class="flex items-center justify-between mb-sm">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Critical</span>
+<span class="material-symbols-outlined text-error">warning</span>
+</div>
+<div class="font-headline-h2 text-headline-h2 font-semibold text-error">145</div>
+<div class="text-error text-xs mt-xs flex items-center gap-xs">
+                            Requires immediate action
+                        </div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md shadow-sm hover:border-secondary transition-colors border-l-4 border-l-on-tertiary-container">
+<div class="flex items-center justify-between mb-sm">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Systemic Issues</span>
+<span class="material-symbols-outlined text-on-tertiary-container">device_hub</span>
+</div>
+<div class="font-headline-h2 text-headline-h2 font-semibold text-on-tertiary-container">12</div>
+<div class="text-on-surface-variant text-xs mt-xs">AI identified patterns</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md shadow-sm hover:border-secondary transition-colors">
+<div class="flex items-center justify-between mb-sm">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Avg. Resolution Time</span>
+<span class="material-symbols-outlined text-outline">timer</span>
+</div>
+<div class="font-headline-h2 text-headline-h2 font-semibold">4.2d</div>
+<div class="text-on-primary-container text-xs flex items-center gap-xs mt-xs">
+<span class="material-symbols-outlined text-[16px]">trending_down</span> -1.1d improvement
+                        </div>
+</div>
+</section>
+<!-- Complex Layout Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Main Intelligence Column -->
+<div class="lg:col-span-2 space-y-gutter">
+<!-- Map Section -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-sm overflow-hidden flex flex-col h-[400px]">
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h3 class="font-headline-h4 text-headline-h4 font-semibold">Geospatial Distribution</h3>
+<div class="flex gap-sm">
+<button class="px-sm py-xs border border-outline-variant rounded text-xs font-button-text flex items-center gap-xs bg-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[16px]">filter_alt</span> Filters
+                                    </button>
+<button class="px-sm py-xs border border-outline-variant rounded text-xs font-button-text flex items-center gap-xs bg-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[16px]">layers</span> Layers
+                                    </button>
+</div>
+</div>
+<div class="relative flex-1 bg-surface-variant">
+<!-- Placeholder for actual map integration -->
+<img alt="Geospatial Map" class="w-full h-full object-cover opacity-80" data-alt="A highly detailed, modern topographical or street map of a major city viewed from directly above, rendered in clean, corporate light-mode style with subtle blue and grey hues, emphasizing road networks and city block boundaries for a dashboard interface." data-location="New York" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyDqMOWOA-lbgHcg92X0cFEJN3dvIidrL2zZ8lQ_qyoSgEAgKu3qdI36f9ghzTwapkqlJrLCzB6rO0l2MoZ2w1Y7Jq8-_jACs_ow4wiMfmb2x2TWK289t_pm0XQB0Bjxuqwys-WCUYmM4soEWa6DEq_HBFuau6ZpAi9XXvrmjNyjk0XJ69a2ab77rtjztCoLNLxwmVuWUc324HqQIMbCRUtCQAAvSFyJjUqNSSpAwDK594JUfSdeYg"/>
+<!-- Map Overlay Data -->
+<div class="absolute bottom-md left-md bg-surface-container-lowest/90 backdrop-blur border border-outline-variant rounded-lg p-sm shadow-md pointer-events-none">
+<div class="text-xs font-label-caps text-on-surface-variant mb-xs">Legend</div>
+<div class="space-y-xs text-xs">
+<div class="flex items-center gap-xs"><div class="w-3 h-3 rounded-full bg-error"></div> Critical</div>
+<div class="flex items-center gap-xs"><div class="w-3 h-3 rounded-full bg-on-tertiary-container"></div> High Priority</div>
+<div class="flex items-center gap-xs"><div class="w-3 h-3 rounded-full bg-secondary"></div> Standard</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Priority Queue Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-sm overflow-hidden">
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<h3 class="font-headline-h4 text-headline-h4 font-semibold">Priority Triage Queue</h3>
+<div class="flex gap-sm">
+<button class="text-secondary hover:underline text-sm font-button-text">View All</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[600px]">
+<thead>
+<tr class="border-b-2 border-primary bg-surface text-on-surface-variant font-label-caps text-label-caps">
+<th class="p-sm font-semibold">ID</th>
+<th class="p-sm font-semibold">Issue</th>
+<th class="p-sm font-semibold">Location</th>
+<th class="p-sm font-semibold">Category</th>
+<th class="p-sm font-semibold">Priority</th>
+<th class="p-sm font-semibold">Status</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm text-on-surface divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="p-sm font-mono text-xs text-on-surface-variant">REQ-8902</td>
+<td class="p-sm font-medium">Major water main break flooding intersection</td>
+<td class="p-sm text-on-surface-variant">Downtown, 4th &amp; Main</td>
+<td class="p-sm">Infrastructure</td>
+<td class="p-sm"><span class="px-2 py-1 rounded bg-error-container text-on-error-container text-[10px] font-bold uppercase">Critical</span></td>
+<td class="p-sm"><span class="flex items-center gap-xs text-secondary"><span class="w-2 h-2 rounded-full bg-secondary"></span> Investigating</span></td>
+</tr>
+<tr class="bg-surface-bright hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="p-sm font-mono text-xs text-on-surface-variant">REQ-8895</td>
+<td class="p-sm font-medium">Power outage affecting traffic signals</td>
+<td class="p-sm text-on-surface-variant">Westside District</td>
+<td class="p-sm">Utilities</td>
+<td class="p-sm"><span class="px-2 py-1 rounded bg-error-container text-on-error-container text-[10px] font-bold uppercase">Critical</span></td>
+<td class="p-sm"><span class="flex items-center gap-xs text-on-surface-variant"><span class="w-2 h-2 rounded-full bg-outline-variant"></span> Dispatched</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="p-sm font-mono text-xs text-on-surface-variant">REQ-8871</td>
+<td class="p-sm font-medium">Persistent noise complaint (Industrial)</td>
+<td class="p-sm text-on-surface-variant">North Sector, Block B</td>
+<td class="p-sm">Environment</td>
+<td class="p-sm"><span class="px-2 py-1 rounded bg-tertiary-fixed text-on-tertiary-fixed-variant text-[10px] font-bold uppercase">High</span></td>
+<td class="p-sm"><span class="flex items-center gap-xs text-on-surface-variant"><span class="w-2 h-2 rounded-full bg-outline-variant"></span> Pending</span></td>
+</tr>
+<tr class="bg-surface-bright hover:bg-bg-surface-container-low transition-colors group cursor-pointer">
+<td class="p-sm font-mono text-xs text-on-surface-variant">REQ-8850</td>
+<td class="p-sm font-medium">Pothole cluster causing vehicular damage</td>
+<td class="p-sm text-on-surface-variant">Route 9, Mile 4</td>
+<td class="p-sm">Transit</td>
+<td class="p-sm"><span class="px-2 py-1 rounded bg-surface-container-high text-on-surface-variant text-[10px] font-bold uppercase">Medium</span></td>
+<td class="p-sm"><span class="flex items-center gap-xs text-on-surface-variant"><span class="w-2 h-2 rounded-full bg-outline-variant"></span> Logged</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Side Panel (Context/Alerts) -->
+<div class="space-y-gutter">
+<!-- AI Insights Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-sm p-md relative overflow-hidden">
+<div class="absolute top-0 right-0 p-sm opacity-10">
+<span class="material-symbols-outlined text-[64px]">psychology</span>
+</div>
+<h3 class="font-headline-h4 text-headline-h4 font-semibold mb-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary text-sm">auto_awesome</span> Systemic Trends
+                            </h3>
+<div class="space-y-md relative z-10">
+<div class="p-sm bg-surface rounded border border-outline-variant">
+<div class="font-label-caps text-label-caps text-on-tertiary-container mb-xs flex justify-between">
+<span>Anomaly Detected</span>
+<span class="material-symbols-outlined text-[16px]">timeline</span>
+</div>
+<p class="font-body-sm text-body-sm">34% spike in localized sanitation complaints in East District over the last 48 hours. Suggests potential disruption in municipal service routes.</p>
+<button class="mt-sm text-xs text-secondary font-button-text flex items-center gap-xs hover:underline">
+                                        Analyze Pattern <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<div class="p-sm bg-surface rounded border border-outline-variant">
+<div class="font-label-caps text-label-caps text-secondary mb-xs flex justify-between">
+<span>Predictive Alert</span>
+<span class="material-symbols-outlined text-[16px]">thunderstorm</span>
+</div>
+<p class="font-body-sm text-body-sm">Incoming severe weather front highly likely to exacerbate ongoing drainage issues in Sector 7 based on historical incident correlation.</p>
+</div>
+</div>
+</div>
+<!-- Recent Critical Alerts List -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-sm">
+<div class="p-md border-b border-outline-variant bg-surface-container-low">
+<h3 class="font-headline-h4 text-headline-h4 font-semibold flex items-center gap-xs">
+<span class="material-symbols-outlined text-error text-sm">notifications_active</span> Live Critical Alerts
+                                </h3>
+</div>
+<ul class="divide-y divide-outline-variant max-h-[400px] overflow-y-auto">
+<li class="p-md hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-xs">
+<span class="font-button-text text-button-text text-error">Gas Leak Report</span>
+<span class="text-xs text-on-surface-variant font-mono">2m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Multiple reports of strong gas odor near residential complex. Emergency services notified via automated protocol.</p>
+</li>
+<li class="p-md hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-xs">
+<span class="font-button-text text-button-text text-error">Structural Hazard</span>
+<span class="text-xs text-on-surface-variant font-mono">15m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Partial collapse of retaining wall on Main St overpass. Traffic rerouting required immediately.</p>
+</li>
+<li class="p-md hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-xs">
+<span class="font-button-text text-button-text text-error">Water Main Break</span>
+<span class="text-xs text-on-surface-variant font-mono">1h ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Significant pressure loss reported across 3 city blocks. Dispatch en route.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

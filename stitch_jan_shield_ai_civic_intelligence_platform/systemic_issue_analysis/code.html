@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Systemic Issue SI-017 - JAN-SHIELD AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#b4c5ff",
+                      "surface-container-low": "#f6f3f5",
+                      "tertiary": "#000000",
+                      "inverse-on-surface": "#f3f0f2",
+                      "primary-fixed": "#dae2fd",
+                      "on-secondary-fixed": "#00174b",
+                      "on-secondary-fixed-variant": "#003ea8",
+                      "on-secondary-container": "#fefcff",
+                      "error-container": "#ffdad6",
+                      "secondary-container": "#316bf3",
+                      "secondary-fixed": "#dbe1ff",
+                      "on-surface": "#1b1b1d",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed": "#271901",
+                      "inverse-surface": "#303032",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-container": "#98805d",
+                      "surface-variant": "#e4e2e4",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "surface-bright": "#fcf8fa",
+                      "on-tertiary-fixed-variant": "#574425",
+                      "surface-container-highest": "#e4e2e4",
+                      "on-surface-variant": "#45464d",
+                      "on-primary-container": "#7c839b",
+                      "tertiary-fixed": "#fcdeb5",
+                      "tertiary-container": "#271901",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed-dim": "#bec6e0",
+                      "primary": "#000000",
+                      "on-primary-fixed": "#131b2e",
+                      "inverse-primary": "#bec6e0",
+                      "outline-variant": "#c6c6cd",
+                      "surface": "#fcf8fa",
+                      "surface-container-high": "#eae7e9",
+                      "background": "#fcf8fa",
+                      "on-background": "#1b1b1d",
+                      "on-primary": "#ffffff",
+                      "tertiary-fixed-dim": "#dec29a",
+                      "error": "#ba1a1a",
+                      "surface-tint": "#565e74",
+                      "outline": "#76777d",
+                      "primary-container": "#131b2e",
+                      "on-tertiary": "#ffffff",
+                      "surface-container": "#f0edef",
+                      "secondary": "#0051d5",
+                      "surface-dim": "#dcd9db",
+                      "on-secondary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "unit": "4px",
+                      "gutter": "24px",
+                      "lg": "24px",
+                      "margin-mobile": "16px",
+                      "md": "16px",
+                      "margin-desktop": "40px",
+                      "xs": "4px",
+                      "xl": "48px",
+                      "container-max": "1440px"
+              },
+              "fontFamily": {
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-h1": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "button-text": [
+                              "Inter"
+                      ],
+                      "headline-h1-mobile": [
+                              "Inter"
+                      ],
+                      "headline-h3": [
+                              "Inter"
+                      ],
+                      "headline-h4": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-h2": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-h1": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "button-text": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-h1-mobile": [
+                              "30px",
+                              {
+                                      "lineHeight": "36px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-h3": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-h4": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "letterSpacing": "0em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-h2": [
+                              "30px",
+                              {
+                                      "lineHeight": "38px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .ai-node-link { stroke: #dbe1ff; stroke-width: 2; }
+        .ai-node { fill: #316bf3; }
+        .ai-node-central { fill: #00174b; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline shadow-sm docked full-width top-0 z-50">
+<div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-lg">
+<span class="font-headline-h3 text-headline-h3 font-bold text-primary dark:text-on-secondary-fixed">JAN-SHIELD AI</span>
+<nav class="hidden md:flex gap-md ml-xl">
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">Dashboard</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">Analytics</a>
+<a class="font-label-caps text-label-caps text-secondary dark:text-secondary-fixed font-bold border-b-2 border-secondary pb-1 opacity-80 transition-all" href="#">Map View</a> <!-- Active state inferred from context of resolving systemic issues often tied to location -->
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex items-center bg-surface-container-high rounded-full px-sm py-xs">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm font-body-sm text-on-surface ml-xs w-48" placeholder="Search..." type="text"/>
+</div>
+<button class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+<img class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="A small circular avatar placeholder image for a generic user profile in a professional civic software interface, light mode lighting, deep blue and white accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdobgxXrEKDgmIdZejmuxxJKi-VwY3wLe0EirBZddZ_m0n0XP1NWoLJBt7kpJG3-vixzY4rqlm_oeeI3LQFZelXG32zOPi2sj805igK3uLdWEDcoR-vEVpZl2j0ed3dR278jksTIcsoDvrY78IlPcsMjC7ObMj_f0SCgedgdsQ7qVEsVkc3Mry3y34mwOU_IYZA-bi6lSFfsW0v4Xu9iS3xlZtrTGMNla5xIr1O7j68R_8XRXY8feK"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 pt-16">
+<!-- SideNavBar (Shared Component) -->
+<aside class="hidden md:flex flex-col h-screen p-md fixed left-0 top-16 z-40 bg-surface-container-lowest dark:bg-inverse-surface border-r border-outline-variant dark:border-outline shadow-md dark:shadow-none docked h-full w-64">
+<div class="mb-lg px-sm">
+<div class="flex items-center gap-sm mb-xs">
+<img class="w-10 h-10 rounded-full" data-alt="A small circular departmental seal placeholder, authoritative and modern, using deep navy blue and silver colors, representing civic oversight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnh4YiXMjnQobwHZRpVDXa4FW1jsbJAmnk_BwmlYQul6XNUPbaKfUbVHJ9effzmwtQZ8kC2ofYPc8MRramakY1NVX9V63THo7mYd36WmfY5M3Z6ukyZCr1HrSTbTkIe4ZaSvpS3rXFHHdhHTa-IuBpqdUMxEbGOKkVnNCkfwIYVw56N4OQogyX8LzcEr0wmNjsEx-pgJ-IJPXmDoVr5tmq0SFvBz7mDtxiV2nKib6zT6vLjJlY5VZA"/>
+<div>
+<h2 class="font-headline-h4 text-headline-h4 font-bold text-primary dark:text-on-secondary-fixed">JAN-SHIELD AI</h2>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Civic Oversight Engine</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-sm">
+<a class="flex items-center gap-md px-md py-sm rounded-lg font-button-text text-button-text text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+                    Overview
+                </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg font-button-text text-button-text text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">how_to_reg</span>
+                    Citizen Requests
+                </a>
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-lg font-bold font-button-text text-button-text scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology</span>
+                    AI Insights
+                </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg font-button-text text-button-text text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_balance</span>
+                    Authority Panel
+                </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg font-button-text text-button-text text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">inventory_2</span>
+                    Archives
+                </a>
+</nav>
+<div class="mt-auto pt-md border-t border-outline-variant flex flex-col gap-sm">
+<button class="w-full bg-error text-on-error py-sm rounded-lg font-button-text text-button-text font-bold mb-md hover:opacity-90 transition-opacity">Emergency Alert</button>
+<a class="flex items-center gap-md px-md py-sm rounded-lg font-button-text text-button-text text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help</span>
+                    Support
+                </a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg font-button-text text-button-text text-on-surface-variant hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+                    Settings
+                </a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 md:ml-64 p-md md:p-lg lg:p-xl max-w-container-max mx-auto w-full">
+<!-- Issue Header -->
+<div class="mb-lg flex flex-col md:flex-row md:items-start justify-between gap-md">
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<span class="bg-error-container text-on-error-container font-label-caps text-label-caps px-sm py-xs rounded-lg">Critical Issue</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps">Ward 17</span>
+</div>
+<h1 class="font-headline-h1 text-headline-h1-mobile md:text-headline-h1 font-bold text-primary mb-xs">SI-017: Waste Collection Failure</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">group</span>
+                        Cluster of 27 related citizen complaints
+                    </p>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs border border-secondary text-secondary font-button-text text-button-text px-md py-sm rounded-lg hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">share</span>
+                        Share
+                    </button>
+<button class="flex items-center gap-xs bg-primary text-on-primary font-button-text text-button-text px-md py-sm rounded-lg hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">print</span>
+                        Export Report
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-md lg:gap-lg mb-xl">
+<!-- AI Reasoning Card (Spans 1 col) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-[0px_1px_3px_rgba(15,23,42,0.08)] flex flex-col hover:border-secondary transition-colors duration-300">
+<div class="flex items-center gap-sm mb-md pb-sm border-b border-outline-variant">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<h3 class="font-headline-h4 text-headline-h4 text-primary">AI Reasoning</h3>
+</div>
+<div class="mb-md">
+<div class="flex justify-between items-end mb-xs">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Cluster Confidence</span>
+<span class="font-headline-h3 text-headline-h3 text-secondary font-bold">92%</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-2">
+<div class="bg-secondary h-2 rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<div class="mb-md">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-xs">Primary Sentiment Drivers</span>
+<div class="flex flex-wrap gap-xs">
+<span class="bg-error-container text-on-error-container font-label-caps text-label-caps px-xs py-xs rounded-lg">"Missed pickup" (18)</span>
+<span class="bg-surface-container-high text-on-surface font-label-caps text-label-caps px-xs py-xs rounded-lg">"Smell/Odor" (12)</span>
+<span class="bg-surface-container-high text-on-surface font-label-caps text-label-caps px-xs py-xs rounded-lg">"Over flowing" (9)</span>
+</div>
+</div>
+<div class="mt-auto bg-primary-fixed-dim rounded-lg p-sm border border-primary-fixed">
+<span class="font-label-caps text-label-caps text-on-primary-fixed-variant block mb-xs">Recommended Action</span>
+<p class="font-body-sm text-body-sm font-semibold text-on-primary-fixed">Immediate route review for Sector 4, Ward 17. Dispatch backup sanitation vehicle.</p>
+</div>
+</div>
+<!-- AI Cluster Visualization (Spans 2 cols) -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-[0px_1px_3px_rgba(15,23,42,0.08)] overflow-hidden relative min-h-[300px] flex flex-col group hover:border-secondary transition-colors duration-300">
+<div class="p-md absolute top-0 left-0 z-10 w-full flex justify-between items-center bg-gradient-to-b from-surface-container-lowest to-transparent">
+<h3 class="font-headline-h4 text-headline-h4 text-primary flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">hub</span>
+                            Complaint Cluster Map
+                        </h3>
+<span class="font-label-caps text-label-caps text-on-surface-variant bg-surface-container-lowest px-sm py-xs rounded-full border border-outline-variant shadow-sm">27 Nodes</span>
+</div>
+<!-- SVG Visualization -->
+<div class="flex-1 w-full h-full bg-surface-bright flex items-center justify-center p-xl">
+<svg class="w-full h-full max-h-[400px]" viewbox="0 0 400 300">
+<!-- Central Node -->
+<circle class="ai-node-central shadow-md" cx="200" cy="150" r="24"></circle>
+<text class="font-label-caps text-[10px] font-bold" fill="#ffffff" text-anchor="middle" x="200" y="155">SI-017</text>
+<!-- Connecting Lines and Nodes (Simulated cluster) -->
+<g class="cluster-nodes">
+<!-- Top Left -->
+<line class="ai-node-link" x1="200" x2="140" y1="150" y2="80"></line>
+<circle class="ai-node" cx="140" cy="80" r="6"></circle>
+<line class="ai-node-link" x1="200" x2="160" y1="150" y2="60"></line>
+<circle class="ai-node" cx="160" cy="60" opacity="0.8" r="5"></circle>
+<line class="ai-node-link" x1="200" x2="110" y1="150" y2="120"></line>
+<circle class="ai-node" cx="110" cy="120" r="8"></circle>
+<!-- Top Right -->
+<line class="ai-node-link" x1="200" x2="260" y1="150" y2="90"></line>
+<circle class="ai-node" cx="260" cy="90" r="7"></circle>
+<line class="ai-node-link" x1="200" x2="290" y1="150" y2="130"></line>
+<circle class="ai-node" cx="290" cy="130" opacity="0.7" r="5"></circle>
+<!-- Bottom Left -->
+<line class="ai-node-link" x1="200" x2="130" y1="150" y2="200"></line>
+<circle class="ai-node" cx="130" cy="200" r="6"></circle>
+<line class="ai-node-link" x1="200" x2="170" y1="150" y2="230"></line>
+<circle class="ai-node" cx="170" cy="230" opacity="0.9" r="5"></circle>
+<!-- Bottom Right -->
+<line class="ai-node-link" x1="200" x2="250" y1="150" y2="210"></line>
+<circle class="ai-node" cx="250" cy="210" r="9"></circle>
+<line class="ai-node-link" x1="200" x2="280" y1="150" y2="180"></line>
+<circle class="ai-node" cx="280" cy="180" opacity="0.6" r="4"></circle>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<!-- Action Panel & Status Timeline -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-md lg:gap-lg mb-xl">
+<!-- Action Panel -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-[0px_1px_3px_rgba(15,23,42,0.08)] hover:border-secondary transition-colors duration-300">
+<h3 class="font-headline-h4 text-headline-h4 text-primary mb-md border-b border-outline-variant pb-sm">Action Panel</h3>
+<div class="flex flex-col gap-md">
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">Assignment</label>
+<div class="relative">
+<select class="w-full bg-surface border border-outline-variant rounded-lg px-sm py-sm font-body-sm text-body-sm text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary appearance-none">
+<option selected="" value="sanitation">Municipal Sanitation Dept.</option>
+<option value="public_works">Public Works</option>
+<option value="health">Public Health Board</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">expand_more</span>
+</div>
+</div>
+<div>
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">Priority Override</label>
+<div class="flex gap-sm">
+<label class="flex-1 cursor-pointer">
+<input class="peer sr-only" name="priority" type="radio"/>
+<div class="text-center font-button-text text-button-text py-xs border border-outline-variant rounded-lg text-on-surface-variant peer-checked:bg-secondary peer-checked:text-on-secondary peer-checked:border-secondary transition-colors">Normal</div>
+</label>
+<label class="flex-1 cursor-pointer">
+<input checked="" class="peer sr-only" name="priority" type="radio"/>
+<div class="text-center font-button-text text-button-text py-xs border border-outline-variant rounded-lg text-on-surface-variant peer-checked:bg-error peer-checked:text-on-error peer-checked:border-error transition-colors">High</div>
+</label>
+</div>
+</div>
+<div class="pt-sm">
+<button class="w-full bg-primary text-on-primary font-button-text text-button-text py-sm rounded-lg hover:bg-on-primary-fixed-variant transition-colors flex justify-center items-center gap-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+                                Initiate Action
+                            </button>
+</div>
+</div>
+</div>
+<!-- Status Timeline -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-[0px_1px_3px_rgba(15,23,42,0.08)] hover:border-secondary transition-colors duration-300">
+<h3 class="font-headline-h4 text-headline-h4 text-primary mb-md border-b border-outline-variant pb-sm">Issue Lifecycle</h3>
+<div class="relative pl-md pt-sm">
+<!-- Vertical line -->
+<div class="absolute left-[27px] top-4 bottom-0 w-0.5 bg-surface-container-high"></div>
+<!-- Timeline Item 1 -->
+<div class="relative flex gap-md mb-md">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center z-10 shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-on-secondary-container text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<h4 class="font-body-md text-body-md font-semibold text-primary">Systemic Issue Identified</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">AI detected anomaly in Ward 17 complaint volume.</p>
+<span class="font-label-caps text-label-caps text-outline block mt-xs">Today, 08:42 AM</span>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative flex gap-md mb-md">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center z-10 shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]" style="font-variation-settings: 'FILL' 0;">pending</span>
+</div>
+<div>
+<h4 class="font-body-md text-body-md font-semibold text-primary">Awaiting Authority Action</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pending assignment to departmental unit.</p>
+<span class="font-label-caps text-label-caps text-outline block mt-xs">Current Status</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Related Complaints Table -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-[0px_1px_3px_rgba(15,23,42,0.08)] overflow-hidden">
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<h3 class="font-headline-h4 text-headline-h4 text-primary">Constituent Grievances (27)</h3>
+<button class="text-secondary font-button-text text-button-text hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b-2 border-primary">
+<th class="p-sm font-label-caps text-label-caps text-on-surface-variant">ID</th>
+<th class="p-sm font-label-caps text-label-caps text-on-surface-variant">Location Snippet</th>
+<th class="p-sm font-label-caps text-label-caps text-on-surface-variant">Date Filed</th>
+<th class="p-sm font-label-caps text-label-caps text-on-surface-variant">Sentiment</th>
+<th class="p-sm font-label-caps text-label-caps text-on-surface-variant text-right">Priority</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm">
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="p-sm font-medium text-primary">REQ-9921</td>
+<td class="p-sm text-on-surface">Oak St &amp; 4th Ave</td>
+<td class="p-sm text-on-surface-variant">Oct 24, 2023</td>
+<td class="p-sm"><span class="bg-error-container text-on-error-container font-label-caps text-label-caps px-xs py-[2px] rounded">Angry</span></td>
+<td class="p-sm text-right">High</td>
+</tr>
+<tr class="bg-surface-bright border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="p-sm font-medium text-primary">REQ-9918</td>
+<td class="p-sm text-on-surface">Maple Dr, Block B</td>
+<td class="p-sm text-on-surface-variant">Oct 24, 2023</td>
+<td class="p-sm"><span class="bg-surface-container-highest text-on-surface font-label-caps text-label-caps px-xs py-[2px] rounded">Frustrated</span></td>
+<td class="p-sm text-right">Med</td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="p-sm font-medium text-primary">REQ-9890</td>
+<td class="p-sm text-on-surface">Pine Lane (Alley)</td>
+<td class="p-sm text-on-surface-variant">Oct 23, 2023</td>
+<td class="p-sm"><span class="bg-error-container text-on-error-container font-label-caps text-label-caps px-xs py-[2px] rounded">Angry</span></td>
+<td class="p-sm text-right">High</td>
+</tr>
+<tr class="bg-surface-bright border-b border-outline-variant hover:bg-surface-container-low transition-colors">
+<td class="p-sm font-medium text-primary">REQ-9875</td>
+<td class="p-sm text-on-surface">Oak St &amp; 5th Ave</td>
+<td class="p-sm text-on-surface-variant">Oct 23, 2023</td>
+<td class="p-sm"><span class="bg-surface-container-highest text-on-surface font-label-caps text-label-caps px-xs py-[2px] rounded">Frustrated</span></td>
+<td class="p-sm text-right">Med</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-low dark:bg-surface-container-lowest border-t border-outline-variant dark:border-outline mt-auto full-width flat no shadows">
+<div class="w-full py-xl px-gutter max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-md">
+<div>
+<span class="font-headline-h4 text-headline-h4 text-primary block mb-xs">JAN-SHIELD AI</span>
+<p class="font-body-sm text-body-sm text-on-surface dark:text-on-surface-variant">© 2024 JAN-SHIELD AI. Institutional Governance Platform.</p>
+</div>
+<nav class="flex flex-wrap gap-md justify-center">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary underline transition-all" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary underline transition-all" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary underline transition-all" href="#">Departmental Directory</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary underline transition-all" href="#">Security Protocol</a>
+</nav>
+</div>
+</footer>
+</body></html>

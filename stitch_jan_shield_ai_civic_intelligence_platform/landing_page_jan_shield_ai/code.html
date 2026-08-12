@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JAN-SHIELD AI - Civic Oversight Engine</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "surface-container-low": "#f6f3f5",
+                        "tertiary": "#000000",
+                        "inverse-on-surface": "#f3f0f2",
+                        "primary-fixed": "#dae2fd",
+                        "on-secondary-fixed": "#00174b",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "on-secondary-container": "#fefcff",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#316bf3",
+                        "secondary-fixed": "#dbe1ff",
+                        "on-surface": "#1b1b1d",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#271901",
+                        "inverse-surface": "#303032",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#98805d",
+                        "surface-variant": "#e4e2e4",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-bright": "#fcf8fa",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-surface-variant": "#45464d",
+                        "on-primary-container": "#7c839b",
+                        "tertiary-fixed": "#fcdeb5",
+                        "tertiary-container": "#271901",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "primary": "#000000",
+                        "on-primary-fixed": "#131b2e",
+                        "inverse-primary": "#bec6e0",
+                        "outline-variant": "#c6c6cd",
+                        "surface": "#fcf8fa",
+                        "surface-container-high": "#eae7e9",
+                        "background": "#fcf8fa",
+                        "on-background": "#1b1b1d",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#565e74",
+                        "outline": "#76777d",
+                        "primary-container": "#131b2e",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#f0edef",
+                        "secondary": "#0051d5",
+                        "surface-dim": "#dcd9db",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "margin-desktop": "40px",
+                        "xs": "4px",
+                        "xl": "48px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-h1": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "button-text": ["Inter"],
+                        "headline-h1-mobile": ["Inter"],
+                        "headline-h3": ["Inter"],
+                        "headline-h4": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-h2": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-h1": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "button-text": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-h1-mobile": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-h3": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-h4": ["20px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-h2": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .hero-pattern {
+            background-image: radial-gradient(var(--tw-colors-outline-variant) 1px, transparent 1px);
+            background-size: 24px 24px;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-secondary selection:text-on-secondary">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-surface border-b border-outline-variant shadow-sm w-full">
+<div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-md">
+<a class="font-headline-h3 text-headline-h3 font-bold text-primary flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shield</span>
+                    JAN-SHIELD AI
+                </a>
+</div>
+<nav class="hidden md:flex items-center gap-lg">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Dashboard</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Analytics</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Map View</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Reports</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-secondary transition-colors rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant overflow-hidden ml-2 flex-shrink-0">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a user avatar in a modern light-mode interface setting, minimalist background, neutral lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7nNcihz0VueQfycxnEoKQemAg7fQjKkPDFGydMrK3Ef0gVFan1bGNt5re_f-YlnIydIBYHJkS8kjvUjDjGa3BhvJMihoVW3HBEnC1RMJUHMBeEQH7XyYrSyPlCfenGohLoXMwJeNBWjWJUsoacttM5-Ml1lRbTl8sWIKcTF8y60Q8gvSSd0h1iDeu99V9INPsKOaCLZ5gSPGz3lQfLP_Mhu4inS7V_iSh1h6-O7N8Dzuy6Xoa1f7g"/>
+</div>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-24 pb-32 overflow-hidden bg-surface border-b border-outline-variant">
+<div class="absolute inset-0 hero-pattern pointer-events-none"></div>
+<div class="max-w-container-max mx-auto px-gutter relative z-10 text-center">
+<span class="inline-block py-1 px-3 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-caps text-label-caps mb-6 border border-secondary-fixed-dim">CIVIC OVERSIGHT ENGINE v2.0</span>
+<h1 class="font-headline-h1-mobile md:font-headline-h1 text-headline-h1-mobile md:text-headline-h1 text-primary max-w-4xl mx-auto mb-6 leading-tight">
+                    Your Voice. <br class="md:hidden"/><span class="text-secondary">AI-Powered Action.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
+                    JAN-SHIELD AI transforms citizen grievances into actionable public-service intelligence. We connect the dots between isolated reports to uncover systemic issues and drive rapid institutional response.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-md">
+<button class="w-full sm:w-auto px-8 py-3 bg-primary text-on-primary font-button-text text-button-text rounded-lg hover:bg-primary-container hover:shadow-md transition-all duration-200 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 20px;">campaign</span>
+                        Report an Issue
+                    </button>
+<button class="w-full sm:w-auto px-8 py-3 bg-transparent border border-outline text-primary font-button-text text-button-text rounded-lg hover:border-secondary hover:text-secondary transition-all duration-200 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 20px;">dashboard</span>
+                        Explore Command Center
+                    </button>
+</div>
+</div>
+<!-- Hero Decorative UI Element -->
+<div class="max-w-5xl mx-auto mt-16 px-gutter relative">
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent z-10 bottom-0 h-24 top-auto"></div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row h-64 md:h-96 relative">
+<div class="w-full md:w-1/3 bg-surface-container-low border-r border-outline-variant p-md flex flex-col gap-sm overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface-container-low z-10 pointer-events-none"></div>
+<div class="animate-[slideUp_20s_linear_infinite] flex flex-col gap-sm">
+<!-- Mock Data rows -->
+<div class="bg-surface-container-lowest p-3 rounded border border-outline-variant text-xs flex gap-2 items-start"><span class="material-symbols-outlined text-error" style="font-size: 16px;">water_drop</span><span>Water pressure drop in Sector 4...</span></div>
+<div class="bg-surface-container-lowest p-3 rounded border border-outline-variant text-xs flex gap-2 items-start"><span class="material-symbols-outlined text-secondary" style="font-size: 16px;">power</span><span>Streetlight out on Main St...</span></div>
+<div class="bg-surface-container-lowest p-3 rounded border border-outline-variant text-xs flex gap-2 items-start"><span class="material-symbols-outlined text-error" style="font-size: 16px;">water_drop</span><span>No water since 8 AM Block B...</span></div>
+<div class="bg-surface-container-lowest p-3 rounded border border-outline-variant text-xs flex gap-2 items-start"><span class="material-symbols-outlined text-on-surface-variant" style="font-size: 16px;">delete</span><span>Missed garbage collection...</span></div>
+<div class="bg-surface-container-lowest p-3 rounded border border-outline-variant text-xs flex gap-2 items-start"><span class="material-symbols-outlined text-error" style="font-size: 16px;">water_drop</span><span>Pipe burst near the school...</span></div>
+<div class="bg-surface-container-lowest p-3 rounded border border-outline-variant text-xs flex gap-2 items-start"><span class="material-symbols-outlined text-error" style="font-size: 16px;">water_drop</span><span>Water pressure drop in Sector 4...</span></div>
+<div class="bg-surface-container-lowest p-3 rounded border border-outline-variant text-xs flex gap-2 items-start"><span class="material-symbols-outlined text-secondary" style="font-size: 16px;">power</span><span>Streetlight out on Main St...</span></div>
+</div>
+</div>
+<div class="w-full md:w-2/3 bg-surface-container-lowest p-lg relative flex items-center justify-center">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiNDQkQ1RTEiLz48L3N2Zz4=')] opacity-50"></div>
+<div class="z-10 w-full max-w-md bg-surface-container-lowest border border-secondary p-md rounded-lg shadow-[0_0_15px_rgba(49,107,243,0.1)]">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-secondary animate-pulse">psychology</span>
+<h3 class="font-headline-h4 text-headline-h4 text-primary">Systemic Issue Detected</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">AI clustered 27 reports over 4 hours indicating a major main break affecting 3 sectors.</p>
+<div class="flex justify-between items-center bg-surface-container-low p-3 rounded border border-outline-variant">
+<span class="font-label-caps text-label-caps text-on-surface">RECOMMENDED ACTION</span>
+<span class="bg-error-container text-on-error-container px-2 py-1 rounded text-xs font-semibold">Dispatch Repair Crew</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<style>
+                @keyframes slideUp {
+                    0% { transform: translateY(0); }
+                    100% { transform: translateY(-50%); }
+                }
+            </style>
+</section>
+<!-- Impact Metrics -->
+<section class="py-xl bg-surface-container-lowest border-b border-outline-variant">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<!-- Metric 1 -->
+<div class="p-lg bg-surface border border-outline-variant rounded-xl hover:border-secondary hover:shadow-sm transition-all text-center">
+<div class="font-headline-h2 text-headline-h2 text-primary mb-1">12,482</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">Reports Analyzed</div>
+</div>
+<!-- Metric 2 -->
+<div class="p-lg bg-surface border border-outline-variant rounded-xl hover:border-secondary hover:shadow-sm transition-all text-center">
+<div class="font-headline-h2 text-headline-h2 text-primary mb-1">1,248</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">Active Cases</div>
+</div>
+<!-- Metric 3 -->
+<div class="p-lg bg-surface border border-outline-variant rounded-xl hover:border-error hover:shadow-sm transition-all text-center relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-error"></div>
+<div class="font-headline-h2 text-headline-h2 text-error mb-1">87</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">Critical Alerts</div>
+</div>
+<!-- Metric 4 -->
+<div class="p-lg bg-surface border border-outline-variant rounded-xl hover:border-secondary hover:shadow-sm transition-all text-center relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary"></div>
+<div class="font-headline-h2 text-headline-h2 text-secondary mb-1">23</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant">Systemic Issues</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Visual Wow: The AI Pipeline -->
+<section class="py-24 bg-surface relative overflow-hidden">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-16">
+<h2 class="font-headline-h2 text-headline-h2 text-primary mb-4">From Noise to Intelligence</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">How our engine processes scattered civic data into focused administrative action.</p>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-between gap-lg relative">
+<!-- Connecting Line -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-outline-variant -z-10 transform -translate-y-1/2 border-dashed border-t-2 border-outline-variant bg-transparent"></div>
+<!-- Step 1 -->
+<div class="w-full md:w-1/4 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg text-center shadow-sm relative group hover:border-secondary transition-colors">
+<div class="w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-secondary-fixed">record_voice_over</span>
+</div>
+<h4 class="font-headline-h4 text-headline-h4 text-primary mb-2">27 Complaints</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Scattered, noisy data points from various channels.</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant md:hidden">arrow_downward</span>
+<!-- Step 2 -->
+<div class="w-full md:w-1/4 bg-secondary-fixed-dim border border-secondary-fixed rounded-xl p-lg text-center shadow-md relative transform md:-translate-y-4">
+<div class="absolute -top-3 -right-3">
+<span class="relative flex h-6 w-6">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-6 w-6 bg-secondary text-white items-center justify-center text-xs"><span class="material-symbols-outlined" style="font-size: 14px;">bolt</span></span>
+</span>
+</div>
+<div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-on-secondary">hub</span>
+</div>
+<h4 class="font-headline-h4 text-headline-h4 text-on-secondary-fixed mb-2">AI Clustering</h4>
+<p class="font-body-sm text-body-sm text-on-secondary-fixed-variant">NLP models identify patterns in geography and semantics.</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant md:hidden">arrow_downward</span>
+<!-- Step 3 -->
+<div class="w-full md:w-1/4 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg text-center shadow-sm hover:border-secondary transition-colors group">
+<div class="w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-error-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-error-container">warning</span>
+</div>
+<h4 class="font-headline-h4 text-headline-h4 text-primary mb-2">1 Systemic Issue</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Root cause identified, deduplicated, and prioritized.</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant md:hidden">arrow_downward</span>
+<!-- Step 4 -->
+<div class="w-full md:w-1/4 bg-primary border border-primary rounded-xl p-lg text-center shadow-lg transform md:scale-105">
+<div class="w-12 h-12 bg-surface-container-lowest/10 rounded-full flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-on-primary">task_alt</span>
+</div>
+<h4 class="font-headline-h4 text-headline-h4 text-on-primary mb-2">1 Recommended Action</h4>
+<p class="font-body-sm text-body-sm text-outline-variant">Clear directive sent to the appropriate authority panel.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-outline-variant w-full">
+<div class="w-full py-xl px-gutter max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-lg">
+<div class="flex flex-col items-center md:items-start gap-2">
+<div class="font-headline-h4 text-headline-h4 text-primary font-bold flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shield</span>
+                    JAN-SHIELD AI
+                </div>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center md:text-left">
+                    © 2024 JAN-SHIELD AI. Institutional Governance Platform.
+                </p>
+</div>
+<nav class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary underline transition-all" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary underline transition-all" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary underline transition-all" href="#">Departmental Directory</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary underline transition-all" href="#">Security Protocol</a>
+</nav>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JAN-SHIELD AI - New Grievance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#b4c5ff",
+                        "surface-container-low": "#f6f3f5",
+                        "tertiary": "#000000",
+                        "inverse-on-surface": "#f3f0f2",
+                        "primary-fixed": "#dae2fd",
+                        "on-secondary-fixed": "#00174b",
+                        "on-secondary-fixed-variant": "#003ea8",
+                        "on-secondary-container": "#fefcff",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#316bf3",
+                        "secondary-fixed": "#dbe1ff",
+                        "on-surface": "#1b1b1d",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#271901",
+                        "inverse-surface": "#303032",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#98805d",
+                        "surface-variant": "#e4e2e4",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-bright": "#fcf8fa",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-surface-variant": "#45464d",
+                        "on-primary-container": "#7c839b",
+                        "tertiary-fixed": "#fcdeb5",
+                        "tertiary-container": "#271901",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "primary": "#000000",
+                        "on-primary-fixed": "#131b2e",
+                        "inverse-primary": "#bec6e0",
+                        "outline-variant": "#c6c6cd",
+                        "surface": "#fcf8fa",
+                        "surface-container-high": "#eae7e9",
+                        "background": "#fcf8fa",
+                        "on-background": "#1b1b1d",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#565e74",
+                        "outline": "#76777d",
+                        "primary-container": "#131b2e",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#f0edef",
+                        "secondary": "#0051d5",
+                        "surface-dim": "#dcd9db",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "margin-desktop": "40px",
+                        "xs": "4px",
+                        "xl": "48px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-h1": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "button-text": ["Inter"],
+                        "headline-h1-mobile": ["Inter"],
+                        "headline-h3": ["Inter"],
+                        "headline-h4": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-h2": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-h1": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "button-text": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "headline-h1-mobile": ["30px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-h3": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-h4": ["20px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-h2": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .step-active { border-color: theme('colors.secondary'); background-color: theme('colors.secondary'); color: theme('colors.on-secondary'); }
+        .step-inactive { border-color: theme('colors.outline-variant'); color: theme('colors.on-surface-variant'); }
+        .step-completed { border-color: theme('colors.primary'); background-color: theme('colors.primary'); color: theme('colors.on-primary'); }
+        .line-active { background-color: theme('colors.secondary'); }
+        .line-completed { background-color: theme('colors.primary'); }
+        
+        .form-input {
+            width: 100%; border: 1px solid theme('colors.outline-variant'); border-radius: theme('borderRadius.DEFAULT'); padding: 0.5rem 0.75rem; background-color: theme('colors.surface-container-lowest'); transition: all 0.2s;
+        }
+        .form-input:focus {
+            outline: none; border-color: theme('colors.secondary'); box-shadow: 0 0 0 4px theme('colors.secondary-fixed-dim');
+        }
+        .file-drop-zone {
+            border: 2px dashed theme('colors.outline-variant'); border-radius: theme('borderRadius.lg'); padding: 2rem; text-align: center; background-color: theme('colors.surface-container-lowest'); cursor: pointer; transition: all 0.2s;
+        }
+        .file-drop-zone:hover, .file-drop-zone.dragover {
+            border-color: theme('colors.secondary'); background-color: theme('colors.surface-container-low');
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md">
+<!-- TopNavBar -->
+<nav class="bg-surface text-primary border-b border-outline-variant shadow-sm w-full sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-4">
+<span class="font-headline-h3 text-headline-h3 font-bold text-primary">JAN-SHIELD AI</span>
+</div>
+<div class="hidden md:flex gap-6 items-center font-label-caps text-label-caps">
+<!-- Nav Links - Suppressed Active state as this is a transactional flow -->
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Analytics</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Map View</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Reports</a>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<button class="hover:text-secondary transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<button class="hover:text-secondary transition-colors"><span class="material-symbols-outlined">settings</span></button>
+<img alt="User profile avatar" class="w-8 h-8 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvRWyZ02Vj1FOK81aJTeyf3rVHhhjqIu0bhQql9MfSn3QR4OBYp7XO43VsENz1Hab04sTdXxM3oDuxFyoXIhQAIAYrroEB49leY5elGF6mA_CTraGkNELlBI2d5k8mmbuNgJGAvW52qoD3DaM6PxtCQT293Sq4QCUrvqtbcRUvz3GBjnSwqWVfKOhEJ8vvQq3ynHOTnnKLS2cVVW737olBUjfNh0dpYTMSm5_hquuZpOtl9AlgcNUr"/>
+</div>
+</div>
+</nav>
+<main class="max-w-container-max mx-auto px-gutter py-xl">
+<!-- Header -->
+<div class="mb-lg">
+<h1 class="font-headline-h1 text-headline-h1-mobile md:text-headline-h1 mb-sm">New Grievance Submission</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Provide details of the incident for AI analysis and routing to the appropriate civic authority.</p>
+</div>
+<!-- Progress Indicator -->
+<div class="mb-xl flex items-center justify-between relative max-w-3xl mx-auto">
+<div class="absolute top-1/2 left-0 w-full h-1 bg-outline-variant -z-10 transform -translate-y-1/2 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-1/3 transition-all duration-300" id="progress-bar"></div>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full border-2 step-active flex items-center justify-center font-button-text text-button-text mb-2 bg-surface-container-lowest z-10">1</div>
+<span class="font-label-caps text-label-caps">Incident Details</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full border-2 step-inactive flex items-center justify-center font-button-text text-button-text mb-2 bg-surface-container-lowest z-10">2</div>
+<span class="font-label-caps text-label-caps">Location</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full border-2 step-inactive flex items-center justify-center font-button-text text-button-text mb-2 bg-surface-container-lowest z-10">3</div>
+<span class="font-label-caps text-label-caps">Evidence</span>
+</div>
+</div>
+<!-- Form Container -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm p-lg md:p-xl max-w-3xl mx-auto relative overflow-hidden">
+<!-- Step 1: Incident Details -->
+<div class="transition-opacity duration-300 opacity-100" id="step-1">
+<h2 class="font-headline-h3 text-headline-h3 mb-md border-b border-outline-variant pb-xs">Incident Details</h2>
+<div class="space-y-md">
+<div>
+<label class="block font-body-sm text-body-sm font-semibold mb-xs">Grievance Title</label>
+<input class="form-input" placeholder="Brief summary of the issue" type="text"/>
+</div>
+<div>
+<label class="block font-body-sm text-body-sm font-semibold mb-xs">Category</label>
+<select class="form-input">
+<option value="">Select a category</option>
+<option value="infrastructure">Infrastructure &amp; Roads</option>
+<option value="sanitation">Sanitation &amp; Waste</option>
+<option value="water">Water Supply</option>
+<option value="electricity">Electricity &amp; Power</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div>
+<label class="block font-body-sm text-body-sm font-semibold mb-xs">Detailed Description</label>
+<textarea class="form-input" placeholder="Provide as much context as possible. AI will analyze this text to extract key entities and sentiment." rows="4"></textarea>
+</div>
+</div>
+<div class="mt-lg flex justify-end">
+<button class="bg-primary text-on-primary font-button-text text-button-text py-2 px-6 rounded-lg hover:opacity-90 transition-opacity" type="button">Next: Location</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low text-on-surface w-full py-xl px-gutter max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center mt-xl border-t border-outline-variant">
+<div class="font-headline-h4 text-headline-h4 text-primary mb-4 md:mb-0">JAN-SHIELD AI</div>
+<div class="font-body-sm text-body-sm mb-4 md:mb-0 text-on-surface-variant">© 2024 JAN-SHIELD AI. Institutional Governance Platform.</div>
+<div class="flex gap-4 font-label-caps text-label-caps text-on-surface-variant">
+<a class="hover:text-secondary underline transition-all" href="#">Privacy Policy</a>
+<a class="hover:text-secondary underline transition-all" href="#">Terms of Service</a>
+<a class="hover:text-secondary underline transition-all" href="#">Departmental Directory</a>
+<a class="hover:text-secondary underline transition-all" href="#">Security Protocol</a>
+</div>
+</footer>
+</body></html>
