@@ -9,12 +9,14 @@ import re
 import sqlite3
 import uuid
 import base64
+import mimetypes
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
 ROOT = Path(__file__).resolve().parent
+FRONTEND_ROOT = ROOT.parent / "stitch_jan_shield_ai_civic_intelligence_platform"
 DB_PATH = Path(os.getenv("DATABASE_PATH", ROOT / "data" / "janshield.db"))
 SECRET = os.getenv("AUTH_SECRET", "local-demo-secret-change-me")
 logging.basicConfig(level=os.getenv("LOG_LEVEL", "INFO"))
@@ -139,6 +141,26 @@ class Handler(BaseHTTPRequestHandler):
     def body(self):
         try: return json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))) or b"{}")
         except json.JSONDecodeError: return None
+    def static_file(self, path):
+        if path == "/":
+            relative = Path("landing_page_jan_shield_ai") / "code.html"
+        else:
+            relative = Path(path.lstrip("/"))
+        candidate = (FRONTEND_ROOT / relative).resolve()
+        try:
+            candidate.relative_to(FRONTEND_ROOT.resolve())
+        except ValueError:
+            return False
+        if not candidate.is_file():
+            return False
+        content_type = mimetypes.guess_type(candidate.name)[0] or "application/octet-stream"
+        payload = candidate.read_bytes()
+        self.send_response(200)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(payload)))
+        self.end_headers()
+        self.wfile.write(payload)
+        return True
     def do_OPTIONS(self): self.send(204, {})
     def do_GET(self): self.route("GET")
     def do_POST(self): self.route("POST")
@@ -148,6 +170,9 @@ class Handler(BaseHTTPRequestHandler):
     def route(self, method):
         path = urlparse(self.path).path; parts = [x for x in path.split("/") if x]; q = parse_qs(urlparse(self.path).query); c = conn()
         try:
+            if method == "GET" and (path == "/" or not path.startswith("/api/") and path != "/health"):
+                if self.static_file(path): return
+                return self.send(*err("NOT_FOUND", "Frontend asset not found", 404))
             if path == "/health": return self.send(*ok({"status": "ok", "service": "JAN-SHIELD API", "database": "connected"}, "Healthy"))
             if path == "/api/auth/register" and method == "POST":
                 p = self.body() or {}; email = str(p.get("email", "")).strip().lower(); password = str(p.get("password", ""))

@@ -6,7 +6,7 @@
   "buildSteps": [],
   "runStep": [
     {
-      "name": "Run Backend API",
+      "name": "Run JAN-SHIELD Application",
       "command": "python3 -m backend.app",
       "port": "3000"
     }
